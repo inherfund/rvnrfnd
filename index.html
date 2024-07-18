@@ -1,0 +1,429 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+<title>Account</title>
+<script defer src="index.js"></script>
+<style>
+/*  Connection  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  overflow: hidden;
+  background: #f2f2f2;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.15);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 15px;
+  color: #fff;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: #2ecc71;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  color: #878787;
+  font-size: 23px;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 25px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+
+
+/*         */
+
+
+
+
+
+   body{
+      overflow-y: hidden;
+      background-image: url(icons/bank\ cover\ 2.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+
+ body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 70vh;
+      justify-content: center;
+    }
+
+#form {
+  width: 300px;
+  margin: 20vh auto 0 auto;
+  padding: 20px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+#form h1 {
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+}
+.button-div{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+button{
+  background-color: rgb(0, 0, 58);
+  padding: 5px 30px;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+label{
+  font-family: sans-serif;
+  margin: 5px 0px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0px;
+}
+
+.input-control input {
+border: 2px solid #f0f0f0;
+background-color: rgb(245, 245, 245);
+border-radius: 4px;
+ display: block;
+ font-size: 12px;
+ padding: 10px;
+} 
+
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: rgba(255, 0, 0, 0.486);
+}
+
+.input-control .error {
+    color: white;
+    font-size: 13px;
+    height: 13px;
+    font-family: sans-serif;
+}
+
+.loader {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+video{
+  position: fixed;
+  z-index: 99;
+  bottom: 80px;
+  width: 25px;
+  height: 25px;
+}
+.loader-img{
+  width: 300px;
+  height: 600px;
+  overflow-y: hidden;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-attachment: fixed;
+   background-size: cover;
+}
+</style>
+    
+</head>
+<body>
+  <div id="loader" class="loader">
+    <img class="loader-img" src="icons/cboa cover.jpg"></p>
+    <video autoplay loop muted src="icons/processing gif.MP4"></video>
+</div>
+
+
+  <div class="scroll">
+    <div class="scroll-div">
+      
+  <div class="container">
+    <form id="form">
+        <h1 class="h1">Login</h1>
+        <div class="input-control">
+            <label for="username">User Id</label>
+            <input placeholder="User-id" id="username" name="username" type="text">
+            <div class="error"></div>
+        </div>
+      
+        <div class="input-control">
+            <label for="password">Password</label>
+            <input placeholder="password" id="password"name="password" type="password">
+            <div class="error"></div>
+        </div>
+        <p class="button-div">
+        <button type="submit">Login</button></p>
+    </form>
+</div>
+
+
+</div>
+</div>
+<script>
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    validateInputs();
+});
+
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
+
+  errorDisplay.innerText = message;
+  inputControl.classList.add('error');
+  inputControl.classList.remove('success')
+}
+
+const setSuccess = element => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector('.error');
+
+  errorDisplay.innerText = '';
+  inputControl.classList.add('success');
+  inputControl.classList.remove('error');
+};
+
+const isValidEmail = email => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+const validateInputs = () => {
+  const usernameValue = username.value.trim();
+  const passwordValue = password.value.trim();
+
+  if(usernameValue === '') {
+    setError(username, 'Enter your user-Id');
+} else if (usernameValue === 'bankproject') {
+    setSuccess(username);
+} else {
+  setError(username, 'Incorrect User-Id');
+
+}
+
+
+if(passwordValue === '') {
+    setError(password, 'Enter Password');
+} else if (passwordValue === '@bankproject#') {
+    setSuccess(password);
+    window.location.href = " userdetails.html"
+} else{
+  setError(password, 'incorrect password');
+}
+
+
+};
+
+
+
+function hide(){
+  document.getElementById('loader').style.visibility = "hidden";
+ }
+ setTimeout('hide()',10000);
+</script>
+
+
+
+
+
+
+
+
+<!--Network Connection--> <div class="wrapper">
+    <div class="toast">
+      <div class="content">
+        <div class="icon"><i class="uil uil-wifi"></i></div>
+        <div class="details">
+          <span>You're online now</span>
+          <p>Connected to the internet.</p>
+        </div>
+      </div>
+      <div class="close-icon"><i class="uil uil-times"></i></div>
+    </div>
+  </div>
+
+ <script>
+  // Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+    function ajax(){
+        let xhr = new XMLHttpRequest(); //creating new XML object
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+        xhr.onload = ()=>{ 
+            if(xhr.status == 200 && xhr.status < 300){
+                toast.classList.remove("offline");
+                title.innerText = "You're online now";
+                subTitle.innerText = "Connected to the internet.";
+                wifiIcon.innerHTML = '<i class="uil uil-wifi"></i>';
+                closeIcon.onclick = ()=>{
+                    wrapper.classList.add("hide");
+                }
+                setTimeout(()=>{ 
+                    wrapper.classList.add("hide");
+                }, 5000);
+            }else{
+                offline(); 
+            }
+        }
+        xhr.onerror = ()=>{
+            offline();
+        }
+        xhr.send(); 
+    }
+
+    function offline(){
+        wrapper.classList.remove("hide");
+        toast.classList.add("offline");
+        title.innerText = "You're offline now";
+        subTitle.innerText = "No internet connection";
+        wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+    }
+
+    setInterval(()=>{ 
+        ajax();
+    }, 100);
+}
+ </script>
+</body>
+</html>

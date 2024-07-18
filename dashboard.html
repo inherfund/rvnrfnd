@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="theme-color" content="linear-gradient(to bottom, #61daff, #656bff)">
+   <meta name="description" content="We will simple add to cart using javascript localstorage">
+   <meta name="keywords" content="add to cart, add to cart javascript, localstorage add to cart, ecommerce shopping javascript, shooping cart demo">
+   <meta name="author" content="Rajamanickam">
+   <link rel="stylesheet" href="style.css">
+   <link rel="icon" href="https://rajamanickam.vercel.app/favicon-rajamanickam.png">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+   <script  src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="dashboard.js"></script>
+   <title>Account Balance</title>
+   <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+body{
+    overflow-y: hidden;
+}
+.nav{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      top: 0;
+    }
+
+    .nav-a{
+      margin: 0px 20px;
+      margin-left: 10px;
+      margin-top: 28px;
+      color: black;
+      font-family: sans-serif;
+    }
+    .nav-a:hover{
+      color: red;
+      text-decoration: underline;
+    }
+    .icon{
+      width: 100%;
+      display: flex;
+      height: auto;
+    }
+    .note{
+      width: 100%;
+      display: flex;
+      justify-content: right;
+    }
+    .icon-a{
+      width: 30px;
+      margin: 0px 6px;
+      margin-left: 20px;
+      color: red;
+      font-size: 25px;
+    }
+    .note-number{
+      color: blue;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .arrow{
+      display: flex;
+      width: 100%;
+      height: auto;
+    }
+    .container{
+      max-width: 120%;
+      padding-top: 20px;
+      top: 0;
+      position: fixed;
+      background-color: white;
+      border-bottom: 1px solid green;
+    }
+    
+
+    
+
+
+.bottom-nav{
+    background-color: red;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    bottom: 0;
+    position: fixed;
+}
+section{
+    width: 100%;
+    height: 100vh;
+   }
+ .account-section{
+    background-color: white;
+ }
+ .send-section{
+  justify-content: center;
+  background-color: rgb(240, 239, 239);
+ }
+ 
+
+    
+/*   Accounts section  */
+.account-nav{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.cboa{
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  width: 100%;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.personal-checkings{
+  display: block;
+  font-size: 20px;
+}
+.account-balance{
+  font-weight: bold;
+  font-size: 50px;
+  box-shadow: 0 0 2px green;
+  border-radius: 50px;
+  padding: 60px 20px; 
+}
+.account-balance-center{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.account-balance-flex{
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+}
+.account-balance-block{
+  width: 100%;
+}
+.acc-btn-options{
+  margin: 0px 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(3, 3, 179);
+  border-color: blue;
+  color: white;
+}
+
+/*   Send Section */
+.amount-to-send-send-title{
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.center-send-button{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.amount-box{
+  color: black;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 126, 0.164);
+  font-size: 50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+.total-count{
+  font-size: 36px;
+}
+.amount-box:hover{
+  background-color: white;
+  color: green;
+}
+.add-amount{
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  border: green;
+  padding: 10px;
+}
+.send-btn-div{
+  margin-top: 50px;
+}
+.send-btn{
+  width: 80%;
+  border-radius: 10px;
+  background-color: rgb(6, 6, 138);
+  color: white;
+  border-color:  rgb(6, 6, 138);
+}
+
+/*    Dashboard section */
+.scroll-d{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll-d::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-d-div{
+      min-width: auto;
+      min-height: auto;
+      display: flex;
+      justify-content: center;
+    }
+.center{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .content-a{
+      margin: 10px 20px;
+      width: 150px;
+      height: 150px;
+      background-color: white;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 0 9px rgb(218, 218, 218);
+    }
+    .first-a{
+      width: 100px;
+      margin-top: 10px;
+      font-size: 20px;
+      display: block;
+      text-align: center;
+      color: red;
+    }
+    .second-a{
+      width: 100px;
+      font-size: 10px;
+      color: black;
+      margin: 6px 0px;
+      display: block;
+      text-align: center;
+    }
+    .third-a{
+      width: 100px;
+      margin: 5px 0px;
+      font-weight: bold;
+      color: black;
+      font-size: 15px;
+      display: block;
+      text-align: center;
+    }
+    .fourth-a{
+      width: 100px;
+      font-size: 10px;
+      color: black;
+      display: block;
+      text-align: center;
+    }
+    .customize-my-dashboard-div{
+      display: flex;
+      justify-content: center;
+    }
+    .customize-btn{
+      background-color: blue;
+      border-color: blue;
+      color: white;
+      border-radius: 10px;
+      padding: 5px 15px;
+    }
+    .customize-btn:hover{
+      border-color: black;
+    }
+
+
+    .top-gap{
+      height: 100px;
+      width: 100%;
+    }
+    .mid-gap{
+      height: 20px;
+    }
+    .gap{
+      height: 100px;
+      width: 100%;
+    }
+/*    product-section  */
+.product-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+ }
+ .product-div{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+ }
+ .no-product{
+   color: black;
+   font-size: 12px;
+ }
+
+ /*   Submit data storage */
+ 
+ .submit-scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .submit-scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .submit-scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+    .data-box-flex{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .data-box-block{
+      box-shadow: 0 0 9px rgba(0, 78, 0, 0.26);
+      width: 80%;
+      padding: 0px 20px;
+      border-radius: 10px;
+    }
+    .data-title-div{
+      display: flex;
+      justify-content: center;
+      width: 80%;
+    }
+    .data-title{
+      font-size: 25px;
+      color: blue;
+    }
+    .data{
+      color: rgb(1, 1, 46);
+      font-weight: bold;
+      font-family: tahoma;
+      font-size: 15px;
+    }
+    .edit-bank-details{
+      border-radius: 5px;
+      border: 1px solid black;
+      font-size: 12px;
+      margin: 20px 0px;
+    }
+    .transfer-to-bank{
+      border-radius: 10px;
+      border-color: rgb(0, 0, 105);
+      background-color: rgb(0, 0, 105);
+      color: white;
+      width: 100%;
+    }
+
+/*     card section */
+    .card-div{
+      display: flex;
+      justify-content: center;
+      margin: 20px 0px;
+    }
+    .card-box{
+      background-color: blue;
+      border: 2px solid rgba(0, 0, 255, 0.432);
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .back-card-box{
+      background-color: blue;
+      border: 2px solid rgba(0, 0, 255, 0.432);
+      width: 80%;
+      height: 30vh;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cp{
+      font-weight:bold;
+      font-family: tahoma;
+      font-size: 15px;
+      color: white;
+    }
+    .card-responsive{
+      display: flex;
+      width: 80%;
+    }
+    .card-type{
+      display: flex;
+      width: 80%;
+      justify-content: right;
+    }
+    .select-div{
+      display: flex;
+      width: 100%;
+      justify-content: right;
+      align-items: center;
+    }
+    .card-select{
+      font-weight: bold;
+      font-family: tahoma;
+      font-size: 15px;
+      width: 100px;
+    }
+    .card-input{
+      margin: 0px 10px;
+      border-radius: 5px;
+      padding: 8px 0px;
+      font-weight: bold;
+      font-family: tahoma;
+      font-size: 15px;
+    }
+    .card-input::placeholder{
+      padding: 0px 20px;
+    }
+
+    .cl{
+      display: flex;
+      width: 80%;
+      margin-left: 10px;
+    }
+    .card-number-div{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin: 10px 0px;
+    }
+    .card-number{
+      display: flex;
+      justify-content: center;
+    }
+    .cd-input{
+      width: 80%;
+      margin: 0px 10px;
+      padding: 5px 0px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-family: tahoma;
+      font-size: 15px;
+    }
+    .cd-input::placeholder{
+      padding: 0px 35%;
+    }
+    .card-holder-div{
+      display: flex;
+      align-items: center;
+      height: 80px;
+    }
+    .card-holder{
+      padding: 6px 2px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-family: tahoma;
+      font-size: 13px;
+    }
+    .card-holder::placeholder{
+      padding: 0px 10px;
+    }
+    .expiry-div{
+      display: flex;
+      width: 80%;
+      justify-content: right;
+    }
+    .card-expiry-date{
+      width: 100px;
+    }
+    .cvv-input{
+      padding: 5px 10px;
+    }
+    .cvv-input::placeholder{
+      padding: 0px 120px;
+      font-size: 15px;
+    }
+    .card-amount-div{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .card-amount{
+      margin: 0px 0px;
+    }
+    .card-amount-p{
+      font-family: tahoma;
+      font-size: 15px;
+    }
+    .card-amount-input{
+      border-radius: 5px;
+      border: 1px solid green;
+      width: 100px;
+      padding: 9px 0px;
+      font-size: 20px;
+    }
+    .card-amount-input::placeholder{
+      font-size: 20px;
+    }
+
+    .card-data-flex-box{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .card-data-block-box{
+      width: 250px;
+      box-shadow: 0 0 9px rgb(167, 167, 167);
+      padding: 0px 10px;
+    }
+    .edit-card{
+      border-radius: 5px;
+      border: 1px solid black;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    .deposit-with-card-div{
+      height: 200px;
+      justify-content: bottom;
+    }
+    .deposit-with-card{
+      border-radius: 10px;
+      border-color: green;
+      background-color: green;
+      color: white;
+      width: 100%;
+    }
+    .card-note{
+      margin: 0px 10px;
+      font-size: 14px;
+    }
+    .continue-card{
+      border-radius: 5px;
+      border: 1px solid blue;
+      background-color: blue;
+      color: white;
+      font-size: 20px;
+      margin: 60px 0px;
+      padding: 0px 15px;
+    }
+
+
+
+/*   */
+.mid-gap{
+  height: 50px;
+}
+/*  validate send section */
+.input-control input:focus {
+    outline: 0;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}
+
+ /*  media  */
+@media screen and (max-width: 500px){
+    .box{
+  width: 260px;
+  height: 310px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 30px 0px;
+  padding: 20px 0px;
+}
+.nav-a{
+      margin: 0px 0px;
+      margin-left: 10px;
+      margin-top: 28px;
+      color: black;
+      font-family: sans-serif;
+    }
+  /* CARD DATA SECTION */
+  .card-input{
+      width: 80px;
+    }
+    .card-type{
+      width: 80px;
+    }
+    .cl{
+      width: 100px;
+    }
+    .card-number-div{
+      margin: 0px 0px;
+    }
+    .card-number{
+      width: 80%;
+    }
+    .card-number::placeholder{
+      padding: 0px 20px;
+    }
+    .card-holder{
+      width: 123px;
+    }
+    .card-holder{
+      margin: 0px 10px;
+    }
+    .card-expiry-date{
+      width: 70px;
+      margin: 0px 1px;
+    }
+    .cvv-input{
+      padding: 5px 10px;
+    }
+    .back-card-box{
+      height: 20vh;
+    }
+   }
+   .gap{
+    height: 100px;
+    width: 100%;
+   }
+   .high-gap{
+    width: 100%;
+    height: 200px;
+   }
+   .mid-gap{
+    height: 50px;
+    width: 100%;
+   }
+   </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="icon">
+         <div class="arrow">
+           <a class="icon-a" href="account.html"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+         </div>
+       
+         <div class="note">
+           <!--arrow-->
+         <a class="icon-a" href="#help"><i class="fa fa-question-circle" aria-hidden="true"></i></a> 
+         <!--notifications-->
+         <a class="icon-a" href="notifications.html"><i class="fa fa-bell" aria-hidden="true"></i><span class="note-number" id="result"></span></a>
+         <!--Transaction History-->
+         <a class="icon-a" id="history" href="#history"><i class="fa fa-book" aria-hidden="true"></i></a>
+         <!--proceed-->
+         <a class="icon-a" href="deposit.html"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       </div>
+        </div>
+         <nav class="nav">
+           <a class="nav-a" href="#$account">Balance</a>
+           <a class="nav-a" href="#$dashboard">Dashboard</a>
+           <a class="nav-a" href="#$products">Products</a>
+         </nav>
+       </div>
+    <div class="bottom-nav"></div>
+   
+   
+
+
+ 
+<!--Account section-->
+<section class="account-section" id="$account">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <div class="gap"></div>
+      <nav class="account-nav">
+        <p class="cboa">Court Bank of America</p>
+      </nav>
+
+        <div class="grand-total account-balance-flex">
+          <div class="account-balance-block">
+
+            
+
+          <p class="account-balance-center">
+          <span class="personal-checkings">Personal Checkings:</span>
+        </p>
+
+          <p class="account-balance-center"><span class="account-balance"> $<span class="total-cart"></span>
+          </p> </span>
+
+<div class="account-balance-center">
+  <a href="transfer.html?#send-within-banks"><button class="acc-btn-options">S</button></a> 
+  <a href="transfer.html?#request-btc"><button class="acc-btn-options">R</button></a>
+  <a href="transfer.html"><button class="acc-btn-options">T</button></a>
+</div>
+
+        </div>
+      </div>
+    </div>
+        
+   <div class="col-lg-3 col-md-6">
+      <div class="featured-item">
+         <div class="featured-item-img">
+            <a href="#">
+            </a>
+         </div>
+         <div class="content">
+            <div class="content-in">
+            </div>
+      
+
+    </div>
+  </div>    
+</section>
+
+
+<!--      SEND SECTION       -->
+<section id="send-section">
+    <form action="deposit.html?#check-first-linked-bank-transfer" method="get">
+    <div class="submit-scroll">
+        <div class="submit-scroll-div">
+          <div class="mid-gap"></div><div class="gap"></div>
+          <div class="gap"></div>
+      <div class="account-balance-flex">
+        <div class="account-number-block">
+
+            <div class="center-send-button">
+              <p class="amount-to-send-send-title">Amount to send</p>
+             </div> 
+
+
+      <p class="center-send-button">
+        <button type="button" class="btn amount-box btn-success my-2 my-sm-0" data-toggle="modal"
+        data-target="#staticBackdrop">$ <span id="total-count" class="total-count"></span>
+     </button>
+      </p>
+
+      <div class="center-send-button">
+        <button  type="button" data-name="titan" data-price="0" class="add-amount default-btn border-radius-5 add-amount-btn">Add Amount</button>
+        </div>
+       
+       
+        <div class="mid-gap"></div>
+        <div class="center-send-button send-btn-div">
+          <button type="button" class="send-btn" onclick="getText()">Send</button>
+        </div>
+
+<div class="gap"></div>       
+    </div>
+    </div>
+</div>
+</div>
+</form>
+
+<script>
+  function getText(){
+    var totalCount = document.getElementById('total-count').innerText;
+    localStorage.setItem('totalCount', totalCount);
+    
+    location.href = "send1.html"
+  }
+ 
+</script>
+</section>
+
+
+
+
+<!--      SEND2 SECTION       -->
+<section id="send2-section">
+  <form action="deposit.html?#check-first-linked-bank-transfer" method="get">
+  <div class="submit-scroll">
+      <div class="submit-scroll-div">
+        <div class="mid-gap"></div><div class="gap"></div>
+        <div class="gap"></div>
+
+    <div class="account-balance-flex">
+      <div class="account-number-block">
+
+          <div class="center-send-button">
+            <p class="amount-to-send-send-title">Amount to send</p>
+           </div> 
+
+
+    <p class="center-send-button">
+      <button type="button" class="btn amount-box btn-success my-2 my-sm-0" data-toggle="modal"
+      data-target="#staticBackdrop">$ <span id="total-count" class="total-count"></span>
+   </button>
+    </p>
+
+    <div class="center-send-button">
+      <button  type="button" data-name="titan" data-price="0" class="add-amount default-btn border-radius-5 add-amount-btn">Add Amount</button>
+      </div>
+     
+     
+      <div class="mid-gap"></div>
+      <div class="center-send-button send-btn-div">
+        <button type="button" class="send-btn" onclick="getTxt()">Send</button>
+      </div>
+
+ <div class="gap"></div>    
+  </div>
+  </div>
+</div>
+</div>
+</form>
+
+<script>
+function getTxt(){
+  var totalCount = document.getElementById('total-count').innerText;
+  localStorage.setItem('totalCount', totalCount);
+  
+  location.href = "send2.html"
+}
+
+</script>
+</section>
+
+
+
+<!--   MODAL  -->
+<section>
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+   <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title" id="staticBackdropLabel">USD</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body">
+         <table class="show-cart table">
+
+         </table>
+        
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <!-- <button type="button" class="btn btn-danger clear-all">Clear All</button> -->
+       </div>
+   </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--$Dashboard Section-->
+<section class="Dashboard-Section" id="$dashboard">
+    <div class="scroll-d">
+      <div class="scroll-d-div">
+        <div class="top-gap"></div>
+      </div>
+      <div class="mid-gap"></div>
+  
+  <!--content-->
+   <div class="scroll-d-div">
+        <div class="center">
+          <div class="content-a">
+          <a href="success.html?#$credited"><span class="first-a"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>
+          <span class="second-a">Court Bank of America</span>
+          <span id="total" class="third-a">$20060.52;</span>
+          <span class="second-a">Credited</span>
+        </a>
+        </div>
+  
+        <div class="content-a">
+          <a href="">
+            <span class="first-a"><i class="fa fa-usd" aria-hidden="true"></i></span>
+            <span class="second-a">Tax Balance</span>
+            <span class="third-a">-$1,321.99</span>
+            <span class="fourth-a">Clear your remaining tax</span>
+          </a>
+        </div>
+        </div>
+      </div>
+  <!--next-->
+      <div class="scroll-d-div">
+      <div class="center">
+      <div class="content-a">
+            <a href="dashboard.html?#card-data-section"><span class="first-a"></span>
+            <span class="second-a">Your Bank card-6013</span>
+            <span class="third-a">Amount <span id="card-amount"></span></span>
+            <span class="fourth-a">Deposit with your Bank Card</span>
+          </a>
+          </div>
+    
+      <div class="content-a">
+            <a href="#secondbank-data-section">
+              <span class="first-a"></span>
+              <span class="second-a">Banking with <span id="dashboard-bank"></span></span>
+              <span class="third-a">Amount <span  id="dashboard-bank-amount"></span></span>
+              <span class="fourth-a">Send to your  Account</span>
+            </a>
+      </div>
+      </div>
+      </div>
+   <!--next-->
+   <div class="scroll-d-div">
+    <div class="center">
+    <div class="content-a">
+          <a href="details.html?#user-details-data"><span class="first-a"></span>
+          <span class="second-a"> Hello</span>
+          <span id="welcome-name" class="third-a">Name</span>
+          <span class="fourth-a">View your personal details</span>
+        </a>
+        </div>
+  
+        <div class="content-a">
+          <a href=""><span class="first-a"></span>
+          <span class="second-a"> Pay & Transfer minimum of:</span>
+          <span class="third-a">$50.02</span>
+          <span class="fourth-a">Send and Receive</span>
+        </a>
+        </div>
+    </div>
+    </div>
+  <!--button-->
+      <div class="customize-my-dashboard-div">
+        <a href="#no">
+        <button class="customize-btn">Customize My Dashboard</button></a>
+      </div>
+  
+  
+      <div class="scroll-d-div">
+        <div class="mid-gap"></div>
+      </div>
+  
+  
+    </div>
+    <script>
+      document.getElementById('welcome-name').innerHTML =  localStorage.getItem('welcomename');
+
+      document.getElementById('card-amount').innerHTML = '$' + localStorage.getItem('cardamount');
+
+       document.getElementById('dashboard-bank').innerHTML = localStorage.getItem('secondbank');
+
+       document.getElementById('dashboard-bank-amount').innerHTML = '$' + localStorage.getItem('secondbankamount');
+    </script>
+  </section>
+
+
+
+
+
+<section class="product-section" id="$products">
+<div class="submit-scroll">
+  <div class="submit-scroll-div">
+  <div class="product-div">
+    <p class="no-product">No product available for now.</p>
+  </div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+  <!--DATA STORAGE SECTION-->
+
+<section id="firstbank-data-section">
+    <div class="submit-scroll">
+      <div class="submit-scroll-div">
+    <main >
+      <div class="gap"></div>
+      <div class="mid-gap"></div>
+
+      <div class="data-box-flex">
+        <div class="data-box-block">
+      <h1 class="data-title-div"><span class="data-title">Bank Details (2)</span></h1>
+      <p class="data" id="data"></p>
+    </div>
+  </div>
+    </main>
+
+    <div class="card-amount-div">
+      <a href="details.html?#bank">
+      <button class="edit-bank-details">Add or Edit Bank Details</button>
+    </a>
+      </div>
+      
+      <div class=" deposit-with-card-div">
+        <p class="card-note">Your Credit card is directly linked to your account ,Your card details must be correct and valid to be able to deposit directly, You can withdraw to your Bank card savings or checking account after first deposit, you can request for withdrawal directly to your other bank with your bank card, follow all necessary process. If you encounter any problems contact the <a href="mailto:customerservicessx@gmail.com">customer service</a></p>
+        </div>
+    
+        <div class="card-amount-div">
+          <a href="#secondbank-data-section">
+          <button class="edit-bank-details">Switch</button></a>
+          </div>
+        
+        <a href="transfer.html?#switch-send-to-bank"><button class="transfer-to-bank">Transfer to this bank</button></a>
+    <div class="mid-gap"></div>
+
+
+  </div>
+</div>
+    <script>
+      const json = localStorage.getItem('first-form');
+      const obj = JSON.parse(json);
+  
+      for (key in obj){
+        const fmarkup = `
+        <div>
+          <span>${key}: ${obj[key]} </span>
+          </div>
+        `;
+        document.getElementById('data').innerHTML += fmarkup;
+      }
+    </script>
+</section>
+
+<!--SECOND BANK DATA-->
+<section id="secondbank-data-section">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <div class="gap"></div>
+      <div class="mid-gap"></div>
+
+    <div class="data-box-flex">
+      <div class="data-box-block">
+    <h1 class="data-title-div"><span class="data-title">Bank details</span></h1>
+    <div class="data" id="sec-data"></div>
+    
+    <span class="data-title-div">
+    <span id="second-bank-result"></span>
+  </span>
+  <span class="data-title-div">
+    $<span id="second-bank-amount-result"></span> 
+  </span>
+  </div>
+</div>
+
+<div class="card-amount-div">
+  <a href="details.html?#add-second-bank">
+  <button class="edit-bank-details">Add or Edit Bank Details</button>
+</a>
+  </div>
+  
+  <div class=" deposit-with-card-div">
+    <p class="card-note">Your Credit card is directly linked to your account ,Your card details must be correct and valid to be able to deposit directly, You can withdraw to your Bank card savings or checking account after first deposit, you can request for withdrawal directly to your other bank with your bank card, follow all necessary process. If you encounter any problems contact the <a href="mailto:customerservicessx@gmail.com">customer service</a></p>
+    </div>
+
+    <div class="card-amount-div">
+      <a href="#firstbank-data-section">
+      <button class="edit-bank-details">Switch</button></a>
+      </div>
+    
+      <a href="transfer.html?#send-to-banks">
+    <button class="transfer-to-bank">Transfer to this bank</button></a>
+<div class="mid-gap"></div>
+  </main>
+</div>
+</div>
+  
+  <script>
+    const jsn = localStorage.getItem('sec-form');
+    const oBj = JSON.parse(jsn);
+
+    for (key in oBj){
+      const Smarkup = `
+      <div>
+        <span>${key}: ${oBj[key]} </span>
+        </div>
+      `;
+      document.getElementById('sec-data').innerHTML += Smarkup;
+    }
+
+    document.getElementById('second-bank-result').innerHTML = localStorage.getItem('secondbank');
+
+    document.getElementById('second-bank-amount-result').innerHTML = localStorage.getItem('secondbankamount');
+
+  </script>
+</section>
+
+
+
+<!---CARD SECTION -->
+
+<section id="card-data-section">
+  <main>
+    <div class="submit-scroll">
+      <div class="submit-scroll-div">
+        <div class="gap"></div>
+        <div class="mid-gap"></div>
+        
+
+  
+
+
+<div class="card-div">
+  <div class="card-box">
+
+    <p class="card-responsive">
+      <span class="card-input card-inpt cp" id="card-bank-name"></span>
+
+      <span class="select-div">
+        <span class="card-type card-select card-inpt cp"  id="card-type"></span> 
+    </span>
+    </p>
+
+    <div class="card-responsive">
+      <div class="card-number-div">
+        <span class="cd-input card-inpt card-number cp" id="card-number"></span> 
+    </div>
+    </div>
+
+    <div class="card-responsive">
+      <div class="card-holder-div">
+       <span  class="card-holder card-holder-number card-inpt cp" id="card-holder-name"></span>
+      
+    </div>
+    <p class="expiry-div">
+      <span class="card-holder card-expiry-date card-inpt cp" id="card-exp-date"></span> 
+    </p>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="card-div">
+  <div class="back-card-box">
+    <p><span class="cvv-input card-inpt cp"  id="card-cvv"></span></p>
+  </div>
+</div>
+
+<div class="card-amount-div">
+<button class="edit-card" onclick="locate()">Add or Edit card</button>
+</div>
+
+<div class=" deposit-with-card-div">
+  <p class="card-note">Your Credit card is directly linked to your account ,Your card details must be correct and valid to be able to deposit directly, You can withdraw to your Bank card savings or checking account after first deposit, you can request for withdrawal directly to your other bank with your bank card, follow all necessary process. If you encounter any problems contact the <a href="mailto:customerservicessx@gmail.com">customer service</a></p>
+  </div>
+  
+  <button class="deposit-with-card" onclick="depositWithCard()">Deposit with my card</button>
+
+  
+<div class="mid-gap"></div>
+</div>
+  </main>
+ 
+  <script>
+    function locate(){
+      window.location.href = "#card-form-details"
+    }
+
+    function depositWithCard(){
+      window.location.href = "deposit.html#see-methods";
+    }
+
+
+
+    document.getElementById('card-amount').innerHTML = '$' + localStorage.getItem('cardamount');
+
+    document.getElementById('card-bank-name').innerHTML = localStorage.getItem('cardbankname');
+
+    document.getElementById('card-type').innerHTML = localStorage.getItem('cardtype');
+
+    document.getElementById('card-number').innerHTML = localStorage.getItem('cardnumber');
+
+    document.getElementById('card-holder-name').innerHTML = localStorage.getItem('cardholdername');
+
+    document.getElementById('card-exp-date').innerHTML = localStorage.getItem('cardexpdate');
+
+    document.getElementById('card-cvv').innerHTML = localStorage.getItem('cardcvv');
+
+  </script>
+</section>
+
+<section id="card-form-details">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+
+      <div class="gap"></div>
+        <div class="mid-gap"></div>
+        
+        <div class="card-data-flex-box">
+          <div class="card-data-block-box">
+        <h1> Your Card Details</h1>
+        <p class="data" id="card-data"></p>
+      </div>
+    </div>
+
+    <div class="card-amount-div">
+      <button class="continue-card" onclick="find()">continue</button>
+      </div>
+ 
+
+    </div>
+  </div>
+  <script>
+
+    function find(){
+      window.location.href = "details.html?#creditcard"
+    }
+    
+    const Cardjsn = localStorage.getItem('cardform');
+    const CardoBj = JSON.parse(Cardjsn);
+
+    for (key in CardoBj){
+      const Cardmarkup = `
+      <div>
+        <span>${key}: ${CardoBj[key]} </span>
+        </div>
+      `;
+      document.getElementById('card-data').innerHTML += Cardmarkup;
+    }
+  </script>
+</section>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

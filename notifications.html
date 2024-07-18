@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>Notifications</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 10px;
+  color: green;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  font-weight: bold;
+  color: #878787;
+  font-size: 18px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+
+
+/*         */
+
+
+
+
+
+
+      body{
+      overflow-y: hidden;
+    }
+    body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    section{
+      width: 100%;
+      height: 100vh;
+    }
+
+
+   .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .nav-div{
+      display: flex;
+    }
+    a{
+      text-decoration: none;
+    }
+    .cancel-span{
+      color: rgb(0, 119, 255);
+      font-weight: bold;
+    }
+    .notifications-div{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-bottom: 25px;
+      padding-top: 15px;
+      border-bottom: 1px solid rgb(216, 216, 216);
+    }
+    .cancel{
+      color: rgb(0, 119, 255);
+      display: flex;
+      width: 100%;
+      font-weight: bold;
+      justify-content: left;
+    }
+    .help{
+      display: flex;
+      width: 100%;
+      justify-content: right;
+      color: rgb(0, 119, 255);
+    }
+    .notifications{
+      font-family: sans-serif;
+      color: rgb(0, 119, 255);
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .spacebar{
+      margin: 0px 5px;
+    }
+    .np{
+      border-bottom: 1px solid rgb(204, 204, 204);
+      padding-bottom: 30px;
+    }
+    
+    .title{
+      color: rgb(6, 6, 185);
+      font-weight: bold;
+      font-family: verdana;
+      font-size: 13px;
+    }
+    .nspan{
+      color: rgb(116, 116, 116);
+    }
+  </style>
+  
+</head>
+<body>
+  <section>
+    <div class="scroll">
+      <div class="scroll-div">
+        
+
+    <div class="notify-scroll">
+      <div class="top-gap"></div>
+      <div class="mid-gap"></div>
+  
+      <div class="notifications-div">
+       <a class="cancel" href="dashboard.html?#$account">Cancel</a>
+       <span class="notifications">Notifications</span>
+       <a class="help" href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+    </div></div>
+  
+      <p class=" np">
+        <a href="success.html?#transfer-success-section">
+        <span class="title">Latest Transfer</span> <br>
+        <span class="nspan"><span>You sent</span><span id="total" class="spacebar">60</span><span class="spacebar">to...</span><span id="name" class="spacebar"></span></span></p></a>
+
+      <p class="np">
+          <span class="title">Tax and Updates</span> <br>
+          <span class="nspan">Clear your remaining tax bills and get the government refund tax out of your account to another bank linked </span>
+      </p>
+  
+      <p class="np">
+        <span class="title">Security</span> <br>
+        <span class="nspan">Stay informed on how we're protecting your account</span>
+      </p>
+
+      <p class="np">
+        <span class="title">Accounts</span> <br>
+        <span class="nspan">Keep up with your account activity balances, overdraft and even fees</span>
+      </p>
+
+      <p class="np">
+        <span class="title">Bills and Pay</span> <br>
+        <span class="nspan">Know when your bills are due and stay updated and Payments</span>
+      </p>
+
+      <p class="np">
+        <span class="title">Insights $ updates</span> <br>
+        <span class="nspan">Get important financial information and timely messages about your accounts</span>
+      </p>
+
+      <p class="np">
+        <span class="title">Credits</span> <br>
+        <span class="nspan">You are credited $... of tax refund by the federal Government, check your dashboard account.</span>
+      </p>
+
+      <p class="np">
+        <span class="title">Deposits and Tranfer</span> <br>
+        <span class="nspan">Link your other banks accounts and transfer your funds after clearing tax due bills. Your Deposits will be added to your fund balance or clear your tax bills, depends on your options choosen</span>
+      </p>
+
+      <p class="np">
+        <span class="title">Link your Banks</span> <br>
+        <span class="nspan">Add your other banks to be able to transfer your funds directly after tax due debt is cleared.</span>
+      </p>
+
+      <p class="np">
+        <span class="title">About </span> <br>
+        <span class="nspan">This bank is published privately by the government to give out to country citizens, All rights reserved, do not fall for scam! there is no  other bank giving out tax refund for citizens.</span>
+      </p>
+
+      
+      
+      </div>
+    </div>
+    
+  </div>
+</div>
+<script>
+  document.getElementById('total').innerHTML = '$' + localStorage.getItem('totalCount');
+   
+ </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Network Connection--> <div class="wrapper">
+  <div class="toast">
+    <div class="content">
+      <div class="icon">connecting...</div>
+      <div class="details">
+        <span></span>
+        <p></p>
+      </div>
+    </div>
+    <div class="close-icon"><i class="uil uil-times"></i></div>
+  </div>
+</div>
+
+<script>
+// Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+  function ajax(){
+      let xhr = new XMLHttpRequest(); //creating new XML object
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+      xhr.onload = ()=>{ 
+          if(xhr.status == 200 && xhr.status < 300){
+              toast.classList.remove("offline");
+              title.innerText = "";
+              subTitle.innerText = "";
+              wifiIcon.innerHTML = 'online...';
+              closeIcon.onclick = ()=>{
+                  wrapper.classList.add("hide");
+              }
+              setTimeout(()=>{ 
+                  wrapper.classList.add("hide");
+              }, 100);
+          }else{
+              offline(); 
+          }
+      }
+      xhr.onerror = ()=>{
+          offline();
+      }
+      xhr.send(); 
+  }
+
+  function offline(){
+      wrapper.classList.remove("hide");
+      toast.classList.add("offline");
+      title.innerText = "You're offline now";
+      subTitle.innerText = "No internet connection";
+      wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+  }
+
+  setInterval(()=>{ 
+      ajax();
+  }, 900);
+}
+</script>
+</body>
+</html>

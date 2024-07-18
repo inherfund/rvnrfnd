@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Notifications</title>
+  <style>
+/*  domestic notification */
+.popup .overlay{
+      position: fixed;
+      top:0px;
+      left:0px;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      z-index:1;
+      display: none;
+    }
+    .popup .content{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%) scale(0);
+      background:#fff;
+      border-radius: 20px;
+      width: 260px;
+      height: auto;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .popup.active  .overlay{
+      display: block;
+    }
+    .popup.active  .content{
+      transition: all 300ms ;
+      transform: translate(-50%,-50%) scale(1);
+    }
+    .error-title{
+      font-family: sans-serif;
+    }
+    .error-try-again{
+      margin-top: -12px;
+    }
+    .error-note{
+      font-family: tahoma;
+    }
+    .close-btn{
+      padding: 5px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: blue;
+      color: white;
+      margin: 0px 5px;
+    }
+    .close-btn:hover{
+      padding: 5px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: 1px solid black;
+      background-color: white;
+      color: black;
+      margin: 0px 5px;
+    }
+    .continue-btn{
+      padding: 3px 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      margin: 0px 5px;
+    }
+    .continue-btn:hover{
+      padding: 3px 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      margin: 0px 5px;
+      color: white;
+      border-color: blue;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body onload="togglePopup()">
+
+  
+<section id="domestic-transfer-notifications">
+  <div class="scroll">
+    <div class="scroll-div">
+<!--Popup notification-->
+      <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+          <h1 class="error-title">Warning!</h1>
+          <p class="error-note">Are you sure you want to change your details?
+          <p class="error-try-again error-note">This processs cannot be undone.</p> 
+
+          <p><button class="close-btn"  onclick="togglePopup(), cancel()">Cancel</button> <button onclick="togglePopup(), proceed()" class="continue-btn">Continue</button></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    function togglePopup(){
+      document.getElementById("popup-1").classList.toggle("active");
+
+    }
+
+
+    function cancel(){
+      window.location.href = "account.html"
+    }
+
+    function proceed(){
+      window.location.href = "details.html?#select-detail-to-edit"
+    }
+  </script>
+</section>
+</body>
+</html>

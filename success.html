@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>success</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 10px;
+  color: green;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  font-weight: bold;
+  color: #878787;
+  font-size: 18px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+
+
+/*         */
+
+
+
+
+
+
+    body{
+      overflow-y: hidden;
+    }
+    body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    section{
+      width: 100%;
+      height: 100vh;
+    }
+    .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+    .submit-scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .submit-scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .submit-scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+    }
+    .header-div{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: red
+    }
+    .transfer-success{
+      font-family: sans-serif;
+      color: white;
+      font-size: 20px;
+    }
+    .successful-div{
+      width: 100%;
+      background-color: rgb(0, 119, 255);
+      display: flex;
+      height: 40px;
+      align-items: center;
+    }
+    .successful{
+      color: white;
+      font-weight: bold;
+      font-size: 17px;
+      font-family: sans-serif;
+      margin: 0px 20px;
+    }
+    .details-div{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .box{
+      width: 260px;
+      height: 300px;
+      margin-top: 20px;
+    }
+    .pp{
+      font-family: sans-serif;
+      display: flex;
+      padding: 10px 10px;
+    }
+    .p{
+      background-color: rgb(0, 153, 255);
+      padding: 5px 5px;
+    }
+    span{
+      font-weight: bold;
+      font-family: sans-serif;
+      display: flex;
+      width: 300px;
+      justify-content: right;
+    }
+    .done{
+      text-decoration: none;
+      color: white;
+      font-family: sans-serif;
+      font-weight: bold;
+      background-color: green;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .border-line{
+      height: 10px;
+      margin-top: 50px;
+      background-color: rgb(192, 190, 190);
+      border-bottom-color:  4px solid black;
+    }
+    .note{
+      margin: 30px 0px;
+      width: 80%;
+      height: auto;
+      font-size: 13px;
+      font-family: sans-serif;
+      color: rgb(121, 120, 120);
+    }
+    .secure-area-div{
+      margin: 0px 20px;
+      font-size: 12px;
+      font-family: sans-serif;
+      color: rgb(128, 128, 128);
+    }
+    .secure-area{
+      font-weight: bold;
+      font-family: sans-serif;
+      color: black;
+    }
+    .position{
+      width: 100%;
+      bottom: 0;
+      background-color: white;
+    }
+    .mid-gap{
+      height: 50px;
+    }
+    .bottom-gap{
+      height: 100px;
+    }
+    .tax{
+      margin: 0px 10px;
+      font-family: sans-serif
+    }
+    .credited{
+      font-size: 13px;
+      color: white;
+      margin: 0px 20px;
+    }
+   /*  payments -list  */
+   .no-transaction-flex{
+    width: 100%;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: rgb(124, 124, 124);
+   } 
+   .new-transfer{
+    font-size: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+   }
+/*    Banks History Section  */
+   
+/*  SEND within banks  */
+.send-center-flex{
+    width: 100%;
+    display: flex;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+   }
+   .send-center-block{
+    width: 100%;
+   }
+   .center-send{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+   }
+   .center-send-block{
+    width: 100%;
+   }
+   .check-history{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    padding: 10px 0px;
+   }
+   .bank-history{
+    display: flex;
+    padding: 40px;
+    margin: 10px 0px;
+    font-size: 18px;
+    font-family: tahoma;
+    color: black;
+    text-decoration: none;
+   }
+   .recipient-history{
+    display: flex;
+    padding: 40px;
+    border-top: 1px solid rgb(223, 223, 223);
+    margin: 10px 0px;
+    font-size: 18px;
+    font-family: tahoma;
+    color: black;
+    text-decoration: none;
+   }
+   .linked-bank:hover,.crypto-account:hover{
+    color: black;
+   }
+   .send-to-your-linked-banks{
+    display: flex;
+    width: 100%;
+   }
+   .send-arrow{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+   }
+   .send-icon{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+   }
+/* check linked banks history */
+   .check-bank-history{
+    font-weight:lighter;
+    color: blue;
+   }
+   .your-linked-banks{
+    font-family: sans-serif;
+    font-weight: lighter;
+    color: red;
+   }
+
+/*   {Key and Object in js }  section  */
+  
+   .bank-data-flex{
+    display: flex;
+    justify-content: center;
+   }
+   .payment{
+    display: flex;
+    justify-content: center;
+    font-family:tahoma;
+    color: white;
+    font-weight: bold;
+    background-color: greenyellow;
+    padding: 20px 0px;
+    margin-top: -5px;
+   }
+   .recipient{
+    background-color: red;
+   }
+   .unsuccessful{
+    display: flex;
+    font-family: tahoma;
+   }
+   .warning{
+    color: orange;
+    margin: 0px 10px;
+    margin-top: 2px;
+   }
+   .amount-data{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 25px;
+   }
+   .your-details{
+    font-family: tahoma;
+    font-size: 15px;
+    margin-bottom: -10px;
+   }
+   .to{
+    display: flex;
+    justify-content: center;
+   }
+   .domestic-name{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: tahoma;
+    display: flex;
+    justify-content: center;
+   }
+
+/*  Done section */
+.done-section{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.successful{
+  color: green;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+.success{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
+}
+.mark{
+  font-size: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+.done-div{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.done-btn{
+  border: 1px solid green;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  padding: 10px 40px;
+}
+#total-transaction{
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+.has{
+  display: flex;
+  justify-content: center;
+}
+
+.color-key{
+  color: rgb(116, 113, 113);
+  display: flex;
+  margin: 0px 0px;
+  justify-content: center;
+  font-size: 10px;
+}
+.color-obj{
+  display: flex;
+  justify-content: center;
+  color: rgb(116, 113, 113);
+  margin: 0px;
+  font-size: 10px;
+}
+.allobjkey{
+  display: flex;
+  width: auto;
+  height: 4px;
+}
+.div{
+  display: flex;
+  justify-content: center;
+}
+#secbank-name{
+  box-shadow: 0 0 9px rgb(224, 224, 224);
+  border-radius: 20px;
+  width: 200px;
+  padding: 10px 10px;
+}
+
+
+.blank-sum{
+  color: white;
+}
+#total{
+  background-color: green;
+  color: white;
+  margin-top: -65px;
+  display: flex;
+  margin-left: 150px;
+  margin-right: 40px;
+  padding-right: 10px;
+  justify-content: right;
+}
+.why{
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+}
+
+/*     */
+.mini-gap{
+ height: 50px;
+}
+.gap{
+  height: 100px;
+}
+  </style>
+</head>
+<body>
+
+
+
+
+<section class="done-section" id="done">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <div class="gap"></div>
+      
+  <div class="block">
+  <p class="sp successful"><i class="mark fa fa-check-circle" aria-hidden="true"></i> <br></p>
+  <p class="success"><span class="success">Transaction Successfully reversed!</span></p>
+  <p id="total-transaction"></p>
+  <p class="has">was to be paid to your account</p>
+  <p class="cover-top"></p>
+  <div class="div">
+  <p id="secbank-name"></p>
+</div>
+  <p class="green-div"><span class="background-color-name"></span></p>
+  
+  <p><a class="why" href="help.html">Check why?</a></p>
+<p class="done-div">
+  <button id="done-btn" class="done-btn" onclick="location.href ='dashboard.html'">Done</button>
+</p>
+
+<script>
+ const seJsn = localStorage.getItem('sec-form');
+    const seoBj = JSON.parse(seJsn);
+
+    for (key in seoBj){
+      const Smarkup = `
+      <div>
+        <div >
+        <p class="allobjkey"><span class="color-key" > ${key}</span><span class="key-space-obj"></span><span class="color-obj" > ${seoBj[key]} </span> </p>
+        </div>
+        </div>
+      `;
+    document.getElementById('secbank-name').innerHTML += Smarkup;
+
+    }
+    document.getElementById('total-transaction').innerHTML = '$' + localStorage.getItem('totalCount');
+</script>
+</div>
+<div class="mini-gap"></div>
+<div class="gap"></div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<section id="$credited">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+
+      <div class="header-div">
+        <h1 class="transfer-success"> Credited <i class="fa fa-check-circle" aria-hidden="true"></i> </h1>
+       </div>
+<div class="successful-div">
+  <p class=" credited">Congrats! Your ineritance funds has been credited by the Government.</p>
+</div>
+
+<div class="top-line"></div>
+<div class="details-div">
+  <div class="box">
+    <p class="pp">Credited: <Span class="tax">Federal Goverment </Span></p>
+    <p class="p pp">To: <span>Personal Checkings</span></p>
+    <p class="pp">Amount: <span>$20,060.52</span></p> 
+    <p class="p pp">Date: <span>10 03 2024</span></p>
+  </div>
+</div>
+
+
+<div class="border-line"></div>
+ 
+<div class="details-div">
+  <p class="note">
+    Your inheritance funds has been credited.
+    <br> <br>
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+     link your other bank accounts to be able to withdraw and transfer your inheritance funds to your other accounts.
+  </p>
+</div>
+
+
+<div class="position">
+  <div class="details-div">
+   <p><button type="button" class="done" onclick="location.href='account.html',getTxt()">Done</button></p>
+  </div>
+  
+  <div class="secure-area-div">
+    <p class="secure-area sp"><i class="fa fa-lock" aria-hidden="true"></i>Secure Area</p>
+    <p class="sp">Contact the Customer Service<a class="customerservice" href="mailto:customerservicessx@gmail.com">@Customer-service</a> , All rights Reserved</p>
+    <p class="sp">Bank of America</p>
+  </div>
+  </div>
+
+<div class="details-div">
+  
+  </p>
+</div>
+</div>
+</div>
+
+
+
+
+</form>
+
+<!-- JS-->
+  <script>
+    document.getElementById('total').innerHTML = '$' + localStorage.getItem('totalCount');
+
+    document.getElementById('Name').innerHTML = localStorage.getItem('name');
+
+    document.getElementById('Date').innerHTML = localStorage.getItem('date');
+
+    document.getElementById('bank').innerHTML = localStorage.getItem('Bank');
+
+    document.getElementById('account-number').innerHTML = localStorage.getItem('accountnumber');
+    
+
+
+// sending data back to notifications//
+
+function getTxt(){
+  var totalAmount = document.getElementById('total').innerText 
+  localStorage.setItem('totalAmount',totalAmount);
+
+ var Name = document.getElementById('Name').innerText 
+  localStorage.setItem('name',Name);
+}
+</script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="history">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="center-send">
+        <h1 class="send-where check-history">Check History</h1>
+      </div>
+    
+    <div class="send-center-flex">
+    <div class="send-center-block">
+           <div class="center-send">
+           <div class="center-send-block">
+    
+        <p><a  class="bank-history" href="#check-linked-banks-history">Banks History</span> </a></p>
+    
+    
+        <p><a  class="recipient-history" href="#domestic-history">Recipient History</span></a></p>
+        
+
+          <p><a  class="recipient-history" href="#int-history">Recipient in another Country History</span></a></p>
+          
+
+         </div>
+         </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="check-linked-banks-history">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="center-send">
+        <h1 class="send-where check-history your-linked-banks">Your Linked Banks</h1>
+      </div>
+    
+    <div class="send-center-flex">
+    <div class="send-center-block">
+           <div class="center-send">
+           <div class="center-send-block">
+    
+        <p><a  class="bank-history check-bank-history" href="#bank1-history">Bank (1) History</span> </a></p>
+    
+    
+        <p><a  class="recipient-history check-bank-history" href="#bank2-history">Bank (2) History</span></a></p>
+        
+
+          <p class="recipient-history"></p>
+          
+
+         </div> 
+         </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="bank1-history">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <nav>
+        <p class="payment">Payment Receipt</p>
+        <p class="unsuccessful">Unsuccessful transaction! <i class="fa warning fa-exclamation-triangle" aria-hidden="true"></i></p>
+      </nav>
+      
+      <div class="bank-data-flex">
+      <div class="bank-data-block">
+        <p class="your-details">Your bank details</p>
+      <p class="data" id="first-data"></p>
+    </div></div>
+
+
+
+    <div class="border-line"></div>
+ 
+<div class="details-div">
+  <p class="note">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    Unfortunately we cannot process your transfer at the moment, make your first deposit and contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+    <br> <br>
+    Transfers to another bank account generally arrives at the recipient's bank within 1-2 business days, if recipient does not receive within these days, contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+  </p>
+</div>
+<div class="bottom-gap"></div>
+<div class="mid-gap"></div>
+
+    </div>
+  </div>
+  <script>
+    const json = localStorage.getItem('first-form');
+    const obj = JSON.parse(json);
+
+    for (key in obj){
+      const fmarkup = `
+      <p class="keyobject"><span class="key"> ${key}</span><br> <span class="object"> ${obj[key]} </span> </p>
+      `;
+      document.getElementById('first-data').innerHTML += fmarkup;
+    }
+  </script>
+</section>
+
+
+
+
+<section id="bank2-history">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <nav>
+        <p class="payment">Payment Receipt</p>
+        <p class="unsuccessful">Unsuccessful transaction! <i class="fa warning fa-exclamation-triangle" aria-hidden="true"></i></p>
+      </nav>
+      
+      <div class="bank-data-flex">
+      <div class="bank-data-block">
+        <p class="your-details">Your bank details</p>
+      <p class="data sec-data" id="sec-data"></p>
+    </div></div>
+
+
+
+    <div class="border-line"></div>
+ 
+<div class="details-div">
+  <p class="note">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    Unfortunately we cannot process your transfer at the moment, make your first deposit and contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+    <br> <br>
+    Transfers to another bank account generally arrives at the recipient's bank within 1-2 business days, if recipient does not receive within these days, contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+  </p>
+</div>
+<div class="bottom-gap"></div>
+<div class="mid-gap"></div>
+
+    </div>
+  </div>
+  <script>
+    const jsn = localStorage.getItem('sec-form');
+     const oBj = JSON.parse(jsn);
+ 
+     for (key in oBj){
+       const Smarkup = `
+       <div class="bank-key-data-flex">
+         <div class="bank-key-data">
+         <p class="keyobject"><span class="key"> ${key}</span> <br> <br> <span class="object"> ${oBj[key]} </span> </p>
+         </div>
+         </div>
+       `;
+       document.getElementById('sec-data').innerHTML += Smarkup;
+     }
+ </script>
+</section>
+
+
+
+
+
+
+<section id="domestic-history">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <nav>
+        <p class="payment recipient">Payment Receipt</p>
+        <p class="unsuccessful">Unsuccessful transaction! <i class="fa warning fa-exclamation-triangle" aria-hidden="true"></i></p>
+      </nav>
+      
+      <div class="bank-data-flex">
+      <div class="bank-data-block">
+        <p class="your-details">You transfered</p><br>
+      <p id="domestic-amount-data"></p>
+      <p class="to">to</p>
+      <p class="domestic-name" id="domestic-name"></p>
+    </div></div>
+
+
+
+    <div class="border-line"></div>
+ 
+<div class="details-div">
+  <p class="note">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    Unfortunately we cannot process your transfer at the moment, make your first deposit and contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+    <br> <br>
+    Transfers to another bank account generally arrives at the recipient's bank within 1-2 business days, if recipient does not receive within these days, contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+  </p>
+</div>
+<div class="bottom-gap"></div>
+<div class="mid-gap"></div>
+
+    </div>
+  </div>
+  <script>
+    const domesticAmountJson =localStorage.getItem('domestic-amount-form');
+        const domesticAmountObj = JSON.parse(domesticAmountJson);
+    
+        for (key in domesticAmountObj){
+          const domesticAmountMarkup = `
+          <div>
+            <span class="amount-data">${key}${domesticAmountObj[key]} </span>
+            </div>
+          `;
+          document.getElementById('domestic-amount-data').innerHTML += domesticAmountMarkup ;
+        }
+
+        document.getElementById('domestic-name').innerHTML = localStorage.getItem('name');
+ </script>
+</section>
+
+
+
+
+<section id="int-history">
+  <div class="submit-scroll">
+    <div class="submit-scroll-div">
+      <nav>
+        <p class="payment recipient">Payment Receipt</p>
+        <p class="unsuccessful">Unsuccessful transaction! <i class="fa warning fa-exclamation-triangle" aria-hidden="true"></i></p>
+      </nav>
+      
+      <div class="bank-data-flex">
+      <div class="bank-data-block">
+        <p class="to">You transfered</p>
+      <p class="amount-data" id="int-amount-data"></p>
+      <p class="to">to Recipient</p>
+      <p class="data sec-data" id="int-data"></p>
+    </div></div>
+
+
+
+    <div class="border-line"></div>
+ 
+<div class="details-div">
+  <p class="note">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    Unfortunately we cannot process your transfer at the moment, make your first deposit and contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+    <br> <br>
+    Transfers to another bank account generally arrives at the recipient's bank within 1-2 business days, if recipient does not receive within these days, contact the <a href="mailto:customerservicessx@gmail.com">customer service</a>.
+  </p>
+</div>
+<div class="bottom-gap"></div>
+<div class="mid-gap"></div>
+
+    </div>
+  </div>
+  <script>
+    const intJson = localStorage.getItem('int-form');
+        const intObj = JSON.parse(intJson);
+
+          
+    
+        for (key in intObj){
+          const intMarkup = `
+          <div class="bank-key-data-flex">
+         <div class="bank-key-data">
+         <p class="keyobject"><span class="key"> ${key}</span> <br> <br> <span class="object"> ${intObj[key]} </span> </p>
+         </div>
+         </div>
+          `;
+          document.getElementById('int-data').innerHTML += intMarkup;
+        }
+
+        const intAmountJson =localStorage.getItem('int-amount-form');
+        const intAmountObj = JSON.parse(intAmountJson);
+    
+        for (key in intAmountObj){
+          const intAmountMarkup = `
+          <div>
+            <span class="amount-data">${key}${intAmountObj[key]} </span>
+            </div>
+          `;
+          document.getElementById('int-amount-data').innerHTML += intAmountMarkup;
+        }
+ </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Network Connection--> <div class="wrapper">
+  <div class="toast">
+    <div class="content">
+      <div class="icon">connecting...</div>
+      <div class="details">
+        <span></span>
+        <p></p>
+      </div>
+    </div>
+    <div class="close-icon"><i class="uil uil-times"></i></div>
+  </div>
+</div>
+
+<script>
+// Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+  function ajax(){
+      let xhr = new XMLHttpRequest(); //creating new XML object
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+      xhr.onload = ()=>{ 
+          if(xhr.status == 200 && xhr.status < 300){
+              toast.classList.remove("offline");
+              title.innerText = "";
+              subTitle.innerText = "";
+              wifiIcon.innerHTML = 'online...';
+              closeIcon.onclick = ()=>{
+                  wrapper.classList.add("hide");
+              }
+              setTimeout(()=>{ 
+                  wrapper.classList.add("hide");
+              }, 100);
+          }else{
+              offline(); 
+          }
+      }
+      xhr.onerror = ()=>{
+          offline();
+      }
+      xhr.send(); 
+  }
+
+  function offline(){
+      wrapper.classList.remove("hide");
+      toast.classList.add("offline");
+      title.innerText = "You're offline now";
+      subTitle.innerText = "No internet connection";
+      wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+  }
+
+  setInterval(()=>{ 
+      ajax();
+  }, 900);
+}
+</script>
+  
+</body>
+</html>

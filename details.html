@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script  src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <title>Details</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 10px;
+  color: green;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  font-weight: bold;
+  color: #878787;
+  font-size: 18px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+
+
+/*         */
+
+
+
+
+    body{
+      overflow-y: hidden;
+    }
+    body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    .nav-a{
+      text-decoration: none;
+      color: black;
+      margin: 0px 10px;
+    }
+    section{
+      width: 100%;
+      height: 100vh;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .already-added-section{
+      background-color: rgba(255, 255, 0, 0.021);
+    }
+
+
+   .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+    
+   .block-box{
+    width: 210px;
+    margin: 0px 5px;
+   }
+   .flex-box{
+    display: flex;
+   }
+    .bank-span{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: green;
+      height: 40px;
+      margin-top: 0px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button{
+      -webkit-appearance: none;
+    }
+    .link{
+      color: white;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+    
+    
+    .a{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 30vh;
+    }
+    .p{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .la{
+      text-decoration: none;
+      color: white;
+      font-family: tahoma;
+      background-color: rgb(0, 68, 255);
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 14px;
+      border: none;
+    }
+    .laa{
+      font-size: 12px;
+      border: 1px solid blue;
+      background-color: rgb(0, 68, 255);
+      border: none;
+    }
+    .la:hover{
+      background-color: red;
+    }
+    .view{
+      text-decoration: none;
+      color: black;
+      font-family: tahoma;
+      background-color: rgba(0, 68, 255, 0.116);
+      border: 1px solid black;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    .view:hover{
+      background-color: rgba(0, 0, 80, 0.096);
+    }
+    .mark-icon{
+      text-decoration: none;
+      color: green;
+      font-family: tahoma;
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 50px;
+    }
+    .details{
+      text-decoration: none;
+      color: green;
+      font-weight: bold;
+      font-family: tahoma;
+      padding: 10px 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      margin-top: -30px;
+      margin-bottom: 30px;
+    }
+    /*   card section */
+    .card-span{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(0, 0, 182);
+      height: 40px;
+      margin-top: 0px;
+    }
+    .ca{
+      text-decoration: none;
+      color: white;
+      font-family: tahoma;
+      background-color: rgb(0, 68, 255);
+      padding: 10px 10px;
+      font-size: 11px;
+      border-radius: 10px;
+    }
+    .la:hover{
+      background-color: red;
+    }
+/* ENTER BANK DETAILS */
+   .start{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .start-span{
+    background-color: green;
+    padding: 10px 10px;
+    border: 1px solid black;
+    color: white;
+    font-size: 20px;
+   }
+   .account-span{
+    background-color: rgb(1, 1, 141);
+    padding: 10px 10px;
+    border: 1px solid black;
+    color: white;
+    font-size: 20px;
+   }
+   .box1{
+    display: flex;
+    width: 100%;
+   }
+   .label{
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: green;
+   }
+   .label-div{
+    padding: 21px 0px;
+   }
+   .currrent-b-label{
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: blue;
+    color: bold;
+   }
+   .balance-input{
+    background-color: blue;
+    border-color: blue;
+    margin: 0px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    padding-left: 10px;
+   }
+   .balance-input::placeholder{
+    color: white;
+   }
+   .input{
+    background-color: rgba(0, 60, 255, 0.11);
+    border-color: green;
+    padding: 10px 0px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    margin: 10px 10px;
+    width: 150px;
+    padding-left: 10px;
+   }
+   .input::placeholder{
+    color: black;
+   }
+   .log-input{
+    background-color: rgba(0, 60, 255, 0.11);
+    border-color: green;
+    padding: 10px 0px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    margin: 10px 10px;
+    width: 100px;
+    padding-left: 10px;
+   }
+   .log-input::placeholder{
+    color: black;
+   }
+   .submit-div{
+    margin-top: 50px;
+   }
+   .submit{
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 15px;
+   }
+
+   /*  second-bank section */
+   .add-sec-bank{
+      text-decoration: none;
+      color: black;
+      font-family: tahoma;
+      background-color: rgba(0, 128, 0, 0.082);
+      border: 1px solid black;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+   }
+   .second-bank-card-span{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color:red;
+      height: 40px;
+      margin-top: 0px;
+    }
+    /*     card section */
+    .card-div{
+      display: flex;
+      justify-content: center;
+      margin: 20px 0px;
+    }
+    .card-box{
+      border: 2px solid rgba(0, 0, 255, 0.432);
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .back-card-box{
+      border: 2px solid rgba(0, 0, 255, 0.432);
+      width: 80%;
+      height: 30vh;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card-responsive{
+      display: flex;
+      width: 80%;
+    }
+    .card-type{
+      display: flex;
+      width: 80%;
+      justify-content: right;
+    }
+    .select-div{
+      display: flex;
+      width: 100%;
+      justify-content: right;
+    }
+    .card-select{
+      width: 100px;
+    }
+    .card-input{
+      margin: 0px 10px;
+      border-radius: 5px;
+      border: 1px solid green;
+      padding: 8px 0px;
+    }
+    .card-input::placeholder{
+      padding: 0px 20px;
+    }
+
+    .cl{
+      display: flex;
+      width: 80%;
+      margin-left: 10px;
+    }
+    .card-number-div{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin: 10px 0px;
+    }
+    .cd-input{
+      width: 80%;
+      margin: 0px 10px;
+      padding: 5px 0px;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
+    .cd-input::placeholder{
+      padding: 0px 35%;
+    }
+    .card-holder-div{
+      display: flex;
+    }
+    .card-holder{
+      margin: 15px 10px;
+      padding: 6px 2px;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+    .card-holder::placeholder{
+      padding: 0px 10px;
+    }
+    .expiry-div{
+      display: flex;
+      width: 80%;
+      justify-content: right;
+    }
+    .card-expiry-date{
+      width: 100px;
+    }
+    .cvv-input{
+      padding: 5px 10px;
+    }
+    .cvv-input::placeholder{
+      padding: 0px 120px;
+      font-size: 15px;
+    }
+    .card-inpt{
+      border: 1px solid green;
+      background-color: rgba(0, 0, 255, 0.075);
+    }
+    .card-amount-div{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .card-amount{
+      margin: 0px 0px;
+    }
+    .card-amount-p{
+      font-family: tahoma;
+      font-size: 15px;
+    }
+    .card-amount-input{
+      border-radius: 5px;
+      border: 1px solid green;
+      width: 100px;
+      padding: 9px 0px;
+      font-size: 20px;
+    }
+    .card-amount-input::placeholder{
+      font-size: 20px;
+    }
+
+  /*  User Details data section */
+  .mid-gap{
+      height: 20px;
+    }
+    .gap{
+      height: 100px;
+      width: 100%;
+    }
+  .data-box-flex{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .data-box-block{
+      box-shadow: 0 0 9px rgba(0, 78, 0, 0.26);
+      width: 80%;
+      padding: 0px 20px;
+      border-radius: 10px;
+    }
+    .data-title-div{
+      display: flex;
+      justify-content: center;
+      width: 80%;
+    }
+    .data-title{
+      font-size: 25px;
+      color: blue;
+    }
+    .data{
+      color: rgb(1, 1, 46);
+      font-weight: bold;
+      font-family: tahoma;
+      font-size: 15px;
+    }
+    .edit-bank-details{
+      border-radius: 5px;
+      border: 1px solid black;
+      font-size: 12px;
+      margin: 20px 0px;
+    }
+    .go-back{
+      border-radius: 10px;
+      border-color: rgb(0, 0, 105);
+      background-color: rgb(0, 0, 105);
+      color: white;
+      padding: 10px 0px;
+      width: 200px;
+    }
+
+/* select-details-div */
+
+   .select-details-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+   }
+   .change-or-edit{
+    display: flex;
+    justify-content: center;
+    font-family: tahoma;
+    background-color: green;
+    color: white;
+    padding: 30px 0px;
+    margin-top: -5px;
+   }
+   .select-details-btn{
+    border: none;
+    margin: 30px 0px;
+    padding: 20px 0px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius:10px;
+    color: blue;
+    font-weight: bold;
+   }
+   .details-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .details-back-btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 130px;
+    background-color: black;
+    padding: 5px 0px;
+    color: white;
+   }
+   .details-a{
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+   }
+
+
+
+
+  @media screen and (max-width: 500px){
+    .card-input{
+      width: 80px;
+    }
+    .card-type{
+      width: 80px;
+    }
+    .cl{
+      width: 100px;
+    }
+    .card-number-div{
+      margin: 0px 0px;
+    }
+    .card-number{
+      width: 80%;
+    }
+    .card-number::placeholder{
+      padding: 0px 20px;
+    }
+    .card-holder{
+      width: 123px;
+    }
+    .card-holder{
+      margin: 0px 10px;
+    }
+    .card-expiry-date{
+      width: 70px;
+      margin: 0px 1px;
+    }
+    .cvv-input{
+      padding: 5px 10px;
+    }
+    .back-card-box{
+      height: 20vh;
+    }
+  }
+ 
+
+    /*      */
+    .gap{
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+<!--Bank Section-->
+  <section id="bank">
+    <div class="scroll">
+      <div class="scroll-div">
+    <p class="bank-span"><Span class="link">Link your Bank details</Span></p>
+
+
+    <p class="link-subject">
+      <a class="a" href="">
+        <p class="p"><a class="la" href="#bank-details">Link or add bank details</a></p>
+        <p class="p"><a href="editdetails.html"><button class="la" id="bank-alert-btn">Change Bank details</button></a></p>
+      </a>
+    </p>
+
+   
+    
+  </div>
+</div>
+  <div class="gap"></div>
+  </section>
+
+
+ 
+
+  <!-- Enter first Bank details section-->
+  <section id="bank-details">
+    <form id="first-form" action="">
+    <div class="scroll">
+      <div class="scroll-div">
+    <p class="card-span"><Span class="link">Enter your bank details</Span></p>
+
+    <p class="start"><span class="start-span">Start</span></p>
+
+<div class="flex-box">
+<div class="block-box">
+      <div class="box1">
+        <div class="label-div">
+        <label class="label" for="bank-name"><span class="label-span">Bank</span></label>
+      </div>
+      </div>
+    
+      <div class="box1">
+        <div class="label-div">
+        <label class="label" for="account Name"><span class="label-span">Account Name</span></label>
+      </div>
+    </div>
+    
+      <div class="box1">
+        <div class="label-div">
+        <label class="label" for="routine-number"><span class="label-span">Routine Number</span></label>
+      </div>
+    </div>
+    
+      <div class="box1">
+        <div class="label-div">
+       <label class="label" for="sort-code"><span class="label-span">Sort Code</span></label>
+      </div>
+    </div>
+    
+      <div class="box1">
+        <div class="label-div">
+        <label class="label" for="account-number"><span class="label-span">Account Number</span></label>
+      </div>
+    </div>
+</div>
+
+<div class="block-box">
+  <div class="box1">
+    <input class="input" name="Bank" placeholder="Bank?" type="text" id="first-bank" >
+  </div>
+
+  <div class="box1">
+    <input class="input" name="Name" placeholder="Your name in the bank" type="text" id="first-bank-name">
+  </div>
+
+  <div class="box1">
+    <input class="input" name="routine-number" placeholder="Routine number?" type="number" id="routine">
+  </div>
+
+  <div class="box1">
+    <input class="input" name="sort-code" placeholder="Sort-code?" type="number" id="sort-code">
+  </div>
+
+  <div class="box1">
+    <input class="input" name="account-number" placeholder="account-number?" type="number" id="account-number">
+  </div>
+</div>
+  </div>
+
+  
+<p class="start"><span class="start-span account-span">Account Amount</span></p>
+
+<div class="flex-box">
+  <div class="block-box">
+        <div class="box1">
+          <div class="label-div">
+          <label class="label" for="bank-name"><span class="label-span">Current Balance in your bank</span></label>
+        </div>
+        </div>
+</div>
+
+<div class="block-box">
+  <div class="box1">
+    <input  class="input" name="amount" placeholder="$ amount" type="number" id="first-bank-amount">
+  </div>
+</div>
+           
+      
+  
+</div>
+
+<p class="start"><span class="start-span">Stop</span></p>
+
+
+
+
+  <p class="start"><a class="add-sec-bank" href="#add-another">add another Bank</a></p>
+
+  <p class="start submit-div"><button type="submit" class="submit" onclick="getText()">Done</button></p>
+</div>
+</form>
+  <div class="gap"></div>
+
+  <script>
+    const firstForm = document.querySelector('#first-form');
+
+    firstForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(firstForm);
+      const obj = Object.fromEntries(fd);
+
+      const json = JSON.stringify(obj);
+      localStorage.setItem('first-form', json);
+
+      window.location.href = "#first-bank-added";
+    })
+
+  </script>
+</section>
+
+  <!--Add another-->
+<section id="add-another">
+  <div class="scroll">
+    <div class="scroll-div">
+  
+
+  <p class="link-subject">
+    <a class="a" href="">
+      <p class="p"><a class="mark-icon " href="#"> </a></p>
+      <p class="p"><a class=" details " href="#">You can only Link two of your Bank Accounts</a></p>
+      <p class="p"><a class="view " href="#second-bank">Proceed to my other account</a></p>
+      <p class="p"><a class="view " href="#bank-details">Back</a></p>
+    </a>
+  </p>
+  
+</div>
+</div>
+
+<div class="gap"></div>
+</section>
+
+<!--First Bank Added Successfully-->
+<section id="first-bank-added">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class="link-subject">
+    <a class="a" href="">
+      <p class="p"><a class="mark-icon " href=""><i class="mark fa fa-check-circle" aria-hidden="true"></i> </a></p>
+      <p class="p"><a class=" details " href="">Details has been added Successfully!</a></p>
+      <p class="p"><a class="view " href="dashboard.html?#firstbank-data-section">View</a></p>
+      <p class="p"><a class="view " href="#bank-details">Go back</a></p>
+    </a>
+  </p>
+  
+</div>
+</div>
+
+<div class="gap"></div>
+</section>
+
+
+
+
+
+
+<!--Bank Section-->
+<section id="add-second-bank">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class="bank-span"><Span class="link">Link your Bank details</Span></p>
+
+
+  <p class="link-subject">
+    <a class="a" href="">
+      <p class="p"><a class="la" href="#second-bank">Link or add bank details</a></p>
+      <p class="p"><a href="editdetails.html"><button class="la " id="bank-alert-btn">Change My Bank Details</button></a></p>
+    </a>
+  </p>
+
+ 
+  
+</div>
+</div>
+<div class="gap"></div>
+</section>
+
+
+
+
+
+
+
+ <!-- Enter Second Bank details section-->
+ <section id="second-bank">
+  <form id="second-form" action="submit.html">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class=" second-bank-card-span"><Span class="link">Enter your bank details</Span></p>
+
+    <p class="start"><span class="start-span">Start</span></p>
+
+<div class="flex-box">
+<div class="block-box">
+    <div class="box1">
+      <div class="label-div">
+      <label class="label" for="bank-name"><span class="label-span">Bank</span></label>
+    </div>
+    </div>
+  
+    <div class="box1">
+      <div class="label-div">
+      <label class="label" for="account Name"><span class="label-span">Account Name</span></label>
+    </div>
+  </div>
+  
+    <div class="box1">
+      <div class="label-div">
+      <label class="label" for="routine-number"><span class="label-span">Routine Number</span></label>
+    </div>
+  </div>
+  
+    <div class="box1">
+      <div class="label-div">
+     <label class="label" for="sort-code"><span class="label-span">Sort Code</span></label>
+    </div>
+  </div>
+  
+    <div class="box1">
+      <div class="label-div">
+      <label class="label" for="account-number"><span class="label-span">Account Number</span></label>
+    </div>
+  </div>
+</div>
+
+<div class="block-box">
+<div class="box1">
+  <input class="input" name="Bank" placeholder="Bank?" type="text" id="second-user-bank">
+</div>
+
+<div class="box1">
+  <input class="input" name="Name" placeholder="Your name in the bank" type="text" id="second-bank-name">
+</div>
+
+<div class="box1">
+  <input class="input" name="Routine" placeholder="Routine number?" type="number" id="second-routine">
+</div>
+
+<div class="box1">
+  <input class="input" name="sort-code" placeholder="Sort-code?" type="number" id="second-sort-code">
+</div>
+
+<div class="box1">
+  <input class="input" name="account number" placeholder="account-number?" type="number" id="second-account-number">
+</div>
+</div>
+</div>
+
+
+<p class="start"><span class="start-span account-span">Account Amount</span></p>
+
+<div class="flex-box">
+  <div class="block-box">
+        <div class="box1">
+          <div class="label-div">
+          <label class="label" for="bank-name"><span class="label-span">Current Balance in your bank</span></label>
+        </div>
+        </div>
+</div>
+
+<div class="block-box">
+  <div class="box1">
+    <input  class="input" name="amount" placeholder="$ amount" type="number" id="second-bank-amount">
+  </div>
+</div>
+
+
+</div>
+
+<p class="start"><span class="start-span">Stop</span></p>
+
+
+
+
+<p class="start"><a class="add-sec-bank" href="#already-added">add another Bank</a></p>
+
+<p class="start submit-div"><button class="submit" onclick="getText(),disable()">Done</button></p>
+</div>
+</form>
+<div class="gap"></div>
+
+<script>
+  const forM = document.querySelector('#second-form');
+
+  forM.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fD = new FormData(forM);
+    const oBj = Object.fromEntries(fD);
+
+    const jsn = JSON.stringify(oBj);
+    localStorage.setItem('sec-form', jsn);
+
+    window.location.href = "#second-bank-added-successfully";
+  })
+
+  function getText(){
+    const secondBank = document.getElementById('second-user-bank').value;
+    localStorage.setItem('secondbank', secondBank )
+
+    const secondBankAmount = document.getElementById('second-bank-amount').value;
+    localStorage.setItem('secondbankamount', secondBankAmount )
+   }
+
+</script>
+
+</script>
+</section>
+
+
+<!--Already added Banks -->
+<section class="already-added-section" id="already-added">
+  <div class="scroll">
+  <div class="scroll-div">
+    <p class="link-subject">
+      <a class="a" href="">
+        <p class="p"><a class=" details " href="">Add limit of 2 Bank Accounts</a></p>
+        <p class="p"><a class="view " href="#bank-details">Proceed</a></p>
+        <p class="p"><a class="view " href="#second-bank">Back</a></p>
+      </a>
+    </p>
+
+</div>
+</div>
+
+<div class="gap"></div>
+</section>
+
+<section id="second-bank-added-successfully">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class="link-subject">
+    <a class="a" href="">
+      <p class="p"><a class="mark-icon " href=""><i class="mark fa fa-check-circle" aria-hidden="true"></i> </a></p>
+      <p class="p"><a class=" details " href="">Details has been added Successfully!</a></p>
+      <p class="p"><a class="view " href="dashboard.html?#secondbank-data-section">View</a></p>
+      <p class="p"><a class="view " href="#second-bank">Go back</a></p>
+    </a>
+  </p>
+  
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+ <!--Credit Card section-->
+   <section id="creditcard">
+    <div class="scroll">
+      <div class="scroll-div">
+    <p class="card-span"><Span class="link">Link your Credit Card</Span></p>
+
+
+  
+
+    <p class="card-subject">
+      <a class="a" href="">
+        <p class="p"><a class=" details " href="">You can only add one bank card!</a></p>
+        <p></p>
+        <p class="p"><a href="#card"><button id="alert-btn" class="la ">Add Card</button></a></p>
+      </a>
+
+        <p class="p"><a href="editdetails.html"><button id="alert-btn" class="la ">Change Card Details</button></a></p>
+      </a>
+    </p>
+    
+  </div>
+</div>
+<div class="gap"></div>
+</section>
+
+
+
+
+
+
+
+   <!--Enter Credit Card Details Section-->
+   <section id="card">
+    <form id="cardform" action="">
+    <div class="scroll">
+      <div class="scroll-div">
+    <p class="bank-span"><Span class="link">Enter you Card Details</Span></p>
+
+
+    <div class="card-div">
+      <div class="card-box">
+        <p class="card-responsive"> 
+            <label class="cl" for="bank-name">Bank Name</label> <br>
+        </p>
+
+        <p class="card-responsive">
+          <input name="Bank" placeholder="Bank?" class="card-input card-inpt" id="bank-name" type="text">
+
+          <span class="select-div">
+          <select class="card-type card-select card-inpt " name="Type" id="card-type">
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+          </select>
+        </span>
+        </p>
+
+        <div class="card-responsive">
+          <div class="card-number-div">
+          <input name="Number" placeholder="Number" class="cd-input card-inpt card-number" id="number" type="number">
+        </div>
+        </div>
+
+        <div class="card-responsive">
+          <div class="card-holder-div">
+          <p><input name="Holder Name" class="card-holder card-holder-number card-inpt" id="holder-name" placeholder="Holder Name " type="text"></p>
+          
+        </div>
+        <p class="expiry-div">
+          <p><input name="Exp Date" class="card-holder card-expiry-date card-inpt" placeholder="Exp Date" id="exp-date" type="text"></p>
+        </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="gap"></div>
+
+    <div class="card-div">
+      <div class="back-card-box">
+      
+        <p><input name="cvv" id="cvv" class="cvv-input card-inpt" placeholder="cvv" type="number"></p>
+
+      </div>
+    </div>
+
+    <div class="card-amount-div">
+    <p class="card-amount card-amount-p">Amount in Card</p>
+  </div>
+  <div class="card-amount-div">
+    <input  placeholder="$"  id="cardamount" class="card-amount card-amount-input" type="number">
+  </div>
+
+    <p class="start submit-div"><button class="submit" onclick="addCard()">Add Card</button></p>  
+   
+    <div class="gap"></div>
+    <div class="mid-gap"></div>
+  </div>
+</div>
+</form>
+
+<script>
+   const CardForm = document.querySelector('#cardform');
+
+  CardForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const CardfD = new FormData(CardForm);
+  const CardoBj = Object.fromEntries(CardfD);
+
+  const Cardjsn = JSON.stringify(CardoBj);
+  localStorage.setItem('cardform', Cardjsn);
+
+  window.location.href = "#card-added-successfully";
+})
+
+function addCard(){
+ const cardAmount = document.getElementById('cardamount').value;
+    localStorage.setItem('cardamount', cardAmount )
+
+const cardBankName = document.getElementById('bank-name').value;
+localStorage.setItem('cardbankname', cardBankName )
+
+const cardType = document.getElementById('card-type').value;
+localStorage.setItem('cardtype', cardType )
+
+const cardNumber = document.getElementById('number').value;
+localStorage.setItem('cardnumber', cardNumber)
+
+const cardHolderName = document.getElementById('holder-name').value;
+localStorage.setItem('cardholdername', cardHolderName)
+
+const cardExpDate = document.getElementById('exp-date').value;
+localStorage.setItem('cardexpdate', cardExpDate)
+
+const cardCvv = document.getElementById('cvv').value;
+localStorage.setItem('cardcvv', cardCvv)
+  
+}
+</script>
+</section>
+
+
+<section id="card-added-successfully">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class="link-subject">
+    <a class="a" href="">
+      <p class="p"><a class="mark-icon " href=""><i class="mark fa fa-check-circle" aria-hidden="true"></i> </a></p>
+      <p class="p"><a class=" details " href="">Card has been added Successfully!</a></p>
+      <p class="p"><a class="view " href="dashboard.html?#card-data-section">View</a></p>
+      <p class="p"><a class="view " href="#card">Go back</a></p>
+    </a>
+  </p>
+  
+</div>
+</div>
+</section>
+
+
+
+<section id="user-details-data">
+  <div class="scroll">
+    <div class="scroll-div">
+      <p class="bank-span"><Span class="link">Personal Details</Span></p>
+  <main >
+    <div class="gap"></div>
+    <div class="mid-gap"></div>
+
+    <div class="data-box-flex">
+      <div class="data-box-block">
+    <h1 class="data-title-div"><span class="data-title">Personal Details</span></h1>
+    <p class="data" id="user-form"></p>
+  </div>
+</div>
+  </main>
+
+  <div class="card-amount-div">
+    <a href="#user-change-data-option">
+    <button class="edit-bank-details">Add or Edit Personal Details</button>
+  </a>
+    </div>
+    
+    <div class=" deposit-with-card-div">
+      <p class="card-note">The bank will not reveal specific information about your accounts or other personally identifiable data to parties, your details and information are safe , contact the  <a href="mailto:taxservicesx@gmail.com">customer services</a> for feedback about your requests</p>
+      </div>
+  
+      <div class="card-amount-div">
+        <a>
+        <button class="edit-bank-details">My Request?</button></a>
+        </div>
+      
+        <div class="card-amount-div">
+      <a href="account.html"><button class="go-back">Done</button></a>
+  <div class="mid-gap"></div>
+</div>
+
+
+</div>
+</div>
+<script>
+  const userJsn = localStorage.getItem('user-data');
+  const userObj = JSON.parse(userJsn);
+
+  for (key in userObj){
+    const Smarkup = `
+    <div>
+      <span>${key}: ${userObj[key]} </span>
+      </div>
+    `;
+    document.getElementById('user-form').innerHTML += Smarkup;
+  }
+</script>
+</section>
+
+
+
+
+<!--User Disclaimer Section-->
+<section id="user-change-data-option">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class="card-span"><Span class="link">Add Your Personal Details</Span></p>
+
+  <p class="card-subject">
+    <a class="a" href="">
+      <p class="p"><a class="la " href="userdetails.html?#user-name-section">I Want to Add My Personal Details</a></p>
+
+      <a href="userdetails.html?#user-details">
+      <p class="p"><button id="alert-btn" class="la ">I Want to Change My Personal Details</button></p></a>
+    </a>
+  </p>
+  
+</div>
+</div>
+<div class="gap"></div>
+</section>
+
+
+<section id="user-details-added-successfully">
+  <div class="scroll">
+    <div class="scroll-div">
+  <p class="link-subject">
+    <a class="a" >
+      <p class="p"><a class="mark-icon " href=""><i class="mark fa fa-check-circle" aria-hidden="true"></i> </a></p>
+      <p class="p"><a class=" details " href="">Details has been added Successfully!</a></p>
+      <p class="p"><a class="view " href="getstarted.html">Done</a></p>
+    </a>
+  </p>
+  
+</div>
+</div>
+</section>
+
+
+<section id="select-detail-to-edit">
+  <div class="scroll">
+    <div class="scroll-div">
+      <nav>
+        <P class="change-or-edit">Change or Edit Details</P>
+      </nav>
+ 
+      <div class="select-details-div">
+      <button  onclick="Bank1()"  class="select-details-btn"><span class="details-btn">Bank Details </span></button>
+ 
+      <button onclick="Bank2()"class="select-details-btn"><span class="details-btn">Bank Details (2)</span></button>
+
+      <button  onclick="card()" class="select-details-btn"><span class="details-btn">Card Details</span></button>
+    </div>
+
+
+    <p><a href="account.html"><button class="details-back-btn">Back</button></a></p>
+
+    </div>
+  </div>
+  <script>
+    function Bank1(){
+      window.location.href = "#second-bank"
+    }
+
+
+    function Bank2(){
+      window.location.href = "#bank-details"
+    }
+
+    
+    function card(){
+      window.location.href = "#card"
+    }
+  </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!--Network Connection--> <div class="wrapper">
+  <div class="toast">
+    <div class="content">
+      <div class="icon">connecting...</div>
+      <div class="details">
+        <span></span>
+        <p></p>
+      </div>
+    </div>
+    <div class="close-icon"><i class="uil uil-times"></i></div>
+  </div>
+</div>
+
+<script>
+// Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+  function ajax(){
+      let xhr = new XMLHttpRequest(); //creating new XML object
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+      xhr.onload = ()=>{ 
+          if(xhr.status == 200 && xhr.status < 300){
+              toast.classList.remove("offline");
+              title.innerText = "";
+              subTitle.innerText = "";
+              wifiIcon.innerHTML = 'online...';
+              closeIcon.onclick = ()=>{
+                  wrapper.classList.add("hide");
+              }
+              setTimeout(()=>{ 
+                  wrapper.classList.add("hide");
+              }, 100);
+          }else{
+              offline(); 
+          }
+      }
+      xhr.onerror = ()=>{
+          offline();
+      }
+      xhr.send(); 
+  }
+
+  function offline(){
+      wrapper.classList.remove("hide");
+      toast.classList.add("offline");
+      title.innerText = "You're offline now";
+      subTitle.innerText = "No internet connection";
+      wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+  }
+
+  setInterval(()=>{ 
+      ajax();
+  }, 900);
+}
+</script>
+</body>
+</html>
