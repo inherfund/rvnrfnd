@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+  <title>Receive and Send $</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 10px;
+  color: green;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  font-weight: bold;
+  color: #878787;
+  font-size: 18px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+
+
+/*         */
+
+
+
+
+
+
+
+   body::-webkit-scrollbar{
+    overflow-y: auto;
+   }
+
+*{
+  margin:0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
+}
+
+
+
+
+div ul a .navigation{
+  color: blue;
+}
+
+div .navigation{
+  overflow-y: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  border-top: 1px solid rgb(194, 194, 194);
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navcontainer{
+      font-size:15px;
+      display: block;
+      width: 100%;
+      height: 80px;
+      bottom:0;
+      position: fixed;
+      border-radius: 10px;
+    }
+
+.navigation ul{
+  display: flex;
+  width: 400px;
+}
+
+.navigation ul li{
+  position: relative;
+  list-style: none;
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+}
+
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.navigation ul li a .text{
+  position: absolute;
+  color: black;
+  font-size: 13px;
+  transition: 0.5s;
+  opacity: 1;
+  transform: translatey(30px);
+  width: 100px;
+}
+
+.navigation ul li:hover a .text{
+  text-decoration:underline;
+  color: rgb(0, 119, 255);
+}
+
+.span-icon{
+  display: block;
+}
+
+@media screen and (max-width: 300px){
+.navigation ul li a .text{
+  position: absolute;
+  color: black;
+  font-weight: 900;
+  font-size: 10px;
+  transition: 0.5s;
+  opacity: 1;
+  transform: translatey(30px);
+  width: 100px;
+  }
+    }
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="navcontainer">
+  <div class="navigation">
+    <ul>
+      <li class="list">
+        <a href="account.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-usd" aria-hidden="true"></i></span>Accounts</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="transfer.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-usd" aria-hidden="true"></i></span>Transfer</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="deposit.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>Deposit/Send</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="menu.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>Menu</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+  
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$Deposit</title>
+  <style>
+     body{
+      overflow-y: hidden;
+    }
+    body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    section{
+      width: 100%;
+      height: 100vh;
+    }
+     .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  
+/*    Make deposit */
+.deposit-flex-div{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+   }
+   .make-deposit-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 20px 0px;
+    align-items: center;
+    background-color:green;
+   }
+   .make-deposit-title{
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+   }
+   .deposit-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+   }
+   .img{
+    height: 50px;
+    width: 120px;
+   }
+   .deposit-title{
+    font-weight: bold;
+    font-family: tahoma;
+    font-size: 25px;
+   }
+   .center-instruction{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .instruction{
+    font-family: tahoma;
+    margin: 30px 20px;
+   }
+   .see-method-btn-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .see-method-btn{
+    width:90%;
+    border-radius: 5px;
+    padding: 5px 0px;
+    font-size: 18px;
+    background-color: rgb(0, 0, 182);
+    border-color: rgb(0, 0, 182);
+    color: white;
+   }
+   .see-method-btn:hover{
+    background-color: rgb(0, 0, 151);
+    border-color: rgb(0, 0, 151);
+   }
+
+/*   domestic check transfer section */
+   .domestic-nav{
+    display: flex;
+    padding-top: 20px;
+    margin: 0px 10px;
+   }
+   .arrow{
+    color: red;
+    font-size: 20px;
+   }
+   .domestic-nav-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: rgb(224, 1, 1);
+    font-family: sans-serif;
+    font-weight: bold;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(150, 0, 0);
+    margin-bottom: 50px;
+   }
+   .profile-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .profile{
+    width: 60px;
+    height: 60px;
+    background-color: rgb(168, 168, 168);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+   }
+   .profile-head{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(228, 227, 227);
+    border-radius: 50%;
+    margin-left: 8px;
+   }
+   .profile-body{
+    width: 40px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(228, 227, 227);
+    border-radius: 50%;
+   }
+   .pp{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+    font-family: sans-serif;
+    font-weight: bold;
+   }
+   .usd{
+    margin-top: -4px;
+    margin-left: 5px;
+   }
+   .int-data{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .data{
+    border: 1px solid green;
+    border-radius: 10px;
+    padding: 20px 30px;
+   }
+   .to{
+    color: rgb(116, 115, 115);
+   }
+   .note{
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    margin: 20px 20px;
+    margin-top: 50px;
+    padding: 20px 0px;
+    border-top: 1px solid rgb(165, 163, 163);
+   }
+   .note-span{
+    margin: 0px 15px;
+   }
+   .once{
+    width: 80%;
+    margin: 20px 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+   }
+   .secure-area-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+   }
+   .lock{
+    font-size: 8px;
+   }
+   .secure-area{
+    font-size: 12px;
+   }
+   .confirm-domestic-nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid rgb(185, 184, 184);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 170px;
+    margin-bottom: 55px;
+   }
+   .confirm-domestic-btn{
+    color: white;
+    font-weight: bold;
+    width: 200px;
+    padding: 10px 0px;
+    background-color: rgb(1, 1, 92);
+    border-radius: 10px;
+   }
+
+
+/*   Confirm Cypto payment data  */
+   .confirm-payment{
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 184);
+    margin: 10px 0px;
+    margin-bottom: 30px;
+   }
+   .crypto-key-object{
+    display: flex;
+   }
+   .crypto-key{
+    padding: 30px 0px;
+    display: flex;
+    margin-left: 10px;
+    border-bottom: 1px solid rgb(197, 197, 197);
+   }
+   .crypto-object{
+    padding: 30px 0px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-right: 30px;
+    border-bottom: 1px solid  rgb(197, 197, 197);
+   }
+   .screenshot-crypto{
+    margin: 30px 30px;
+    font-size: 12px;
+   }
+   .crypto-customer-service{
+    color: blue;
+    font-size: 15px;
+   }
+   .cancel-crypto-payment-button-div{
+    display: flex;
+    justify-content: center;
+   }
+   .cancel-crypto-payment-button{
+    padding: 4px 10px;
+    border-radius: 5px;
+    background: blue;
+    color: white;
+    border: none;
+   }
+
+/*  deposit with methods  */
+   .make-deposit{
+    display: flex;
+    margin: 4px 10px;
+    color: blue;
+   }
+  .deposit-with-credit-card-div{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+  }
+  .deposit-with-credit-card{
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 10px;
+    width: 260px;
+    height: 350px;
+  }
+  .deposit-with-card-title{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    margin: 10px 0px;
+    margin-top: 30px;
+  }
+  .credit-card-div{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    align-items: center;
+  }
+  .credit-card{
+    font-size: 100px;
+    color: red;
+  }
+
+
+ 
+  .deposit-with-crypto-div{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+  }
+  .deposit-with-crypto{
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 10px;
+    width: 260px;
+    height: 350px;
+    display: block;
+  }
+  .deposit-with-crypto-title{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .crypto-img-div{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    align-items: center;
+  }
+  .crypto-img{
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+  }
+  .deposit-method-note{
+    font-size: 12px;
+    margin: 0px 10px;
+    color: black;
+  }
+
+/*  platforms div  */
+  .crypto-platforms-div{
+    display: flex;
+    justify-content: center;
+  }
+  .crypto-platform{
+    display: flex;
+    border: 2px solid rgb(196, 142, 6);
+    background-color: rgb(196, 142, 6);
+    color: white;
+    width: 40%;
+    padding: 20px 0px;
+    border-radius: 10px;
+    margin: 20px 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
+  .crypto-platform:hover{
+    border: 2px solid blue;
+  }
+  .platform-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .platform-block{
+    width: 100%;
+  }
+  .arrow-back{
+    color: red;
+    font-size: 30px;
+    margin-right: 20px;
+  }
+  .open-account-platform{
+    color: blue;
+    margin: 10px 20px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding-bottom: 15px;
+  }
+  .center-platform-logo{
+    display: flex;
+    justify-content: center;
+  }
+  .platform-logo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  .n{
+    font-size: 15px;
+  }
+  .i-have{
+    display: flex;
+    justify-content: center;
+    color: blue;
+    font-size: 12px;
+    margin: 0px 30px;
+  }
+
+/*  deposit with card */
+  .bank-card-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+  }
+  .bank{
+    font-size: 125px;
+    color: green;
+  }
+  .card{
+    font-size: 75px;
+    margin-top: 35px;
+    color: red;
+  }
+
+  .add-card-payment-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  .add-card-payment{
+    color: white;
+    background-color: blue;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  .forbidden{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 100px;
+  }
+  .error{
+    font-weight: bold;
+  }
+  .after{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    margin: 20px 30px;
+  }
+  .cs{
+    font-size: 13px;
+    margin: 0px 3px;
+  }
+
+/* apple google play store */
+  .center-apple-googplay-store{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+  }
+  .store{
+    width: 260px;
+    height: 100px;
+    border-radius: 15px;
+  }
+  .center-store{
+    display: flex;
+    justify-content: center;
+  }
+  .download-platform{
+    display: flex;
+    justify-content: center;
+    background: green;
+    color: white;
+    margin: 20px 0px;
+    border-radius: 10px;
+    padding: 5px 0px;
+  }
+
+
+
+   /*  */
+   .gap{
+    height: 100px;
+    width: 100%;
+   }
+   .high-gap{
+    height: 150px;
+    width: 100%;
+   }
+   .mini-gap{
+    height: 30px;
+    width: 100%;
+   }
+   
+  </style>
+</head>
+<body>
+  <section>
+    <div class="scroll">
+      <div class="scroll-div">
+
+        <nav class="make-deposit-div">
+          <p class="make-deposit-title">Make Deposit</p>
+        </nav>
+
+        
+        <div class="deposit-flex-div">
+          <div class="deposit-block-div">
+        <div class="center-instruction">
+          
+        </div>
+
+        <div class="center-instruction">
+          <div class="center-block">
+            <p class="deposit-title"><img class="img" src="icons/deposit.jpg">Direct Deposit</p>
+
+          <p class="instruction">- Deposit Cash From your Credit Card with the method Given</p>
+          <p class="instruction">- Access Cash as Quickly as 1-3 business days</p>
+          <p class="instruction">- Follow the method provided</p>
+          <p class="instruction">- Withdraw any amount after first deposit</p>
+        </div>
+      </div>
+
+        <div class="see-method-btn-div">
+        <button onclick="location.href='#see-methods'" class="see-method-btn">See Methods</button>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<section id="see-methods">
+<div class="scroll">
+  <div class="scroll-div">
+    <p class="make-deposit">Make Deposit</p>
+
+    <div class="deposit-with-credit-card-div">
+      <a href="#credit-card-payment">
+      <div class="deposit-with-credit-card">
+      <span class="deposit-with-card-title">Deposit with Credit card</span>
+      <span class="credit-card-div"><i class="fa credit-card fa-credit-card-alt" aria-hidden="true"></i></span>
+      <p class="deposit-method-note">You can make deposit directly with your bank card by paying to your account details on mercury.io.</p>
+      </div></a>
+  </div>
+
+    <div class="mini-gap"></div>
+
+    <div class="deposit-with-crypto-div">
+      <a href="#deposit-with-crypto">
+      <div class="deposit-with-crypto">
+      <span class="deposit-with-crypto-title">Deposit with Crypto</span>
+      <span class="crypto-img-div"><img class="crypto-img" src="icons/crypto logo.jpg"></span>
+      <p class="deposit-method-note">you can make deposit with crypto platform available in your country by opening an account and verifying your account , then you can send and receive crypto</p>
+      </div></a>
+  </div>
+
+
+    <div class="gap"></div>
+  </div>
+</div>
+</section>
+
+
+
+
+
+<section id="credit-card-payment">
+  <div class="scroll">
+    <div class="scroll-div">
+      <p class="open-account-platform"><a href="#see-methods"><span class="arrow-back"><</span></a>Deposit with Card</p>
+
+      <p class="bank-card-div"><i class="fa bank fa-university" aria-hidden="true"></i><i class="fa  card fa-credit-card-alt" aria-hidden="true"></i></p>
+<a class="add-card-payment-div" href="https://exchange.mercuryo.io/?currency=BTC&fiat_amount=150&fiat_currency=GBP&merchant_transaction_id=da47728a-0c19-229c-f701-30a941af1f9a&network=BITCOIN&payment_method=card&signature=410890d887c50c5104dee1b32e917dabcbce281610ab1d37cfec0fcb93902847bd44652c063b1a17880c0e97855ab95531b01bfaa89e056f19f627858af60841&theme=trustwallet&utm_medium=referral&utm_source=TrustWallet&widget_id=d13d7a03-f965-4688-b35a-9d208819ff4b&address=bc1qnd7duazldue3qn26cmyrlxuhsg0np0kxnht2e3"><span class="add-card-payment">Add Card details</span></a>
+
+<p class="forbidden">if encounter " <span class="error">Forbidden error</span>" click 'add card' again</p>
+
+<p class="after"> After successful process submit receipt details to <a class="crypto-customer-service cs" href="mailto:customerservicessx@gmail.com">@customer service</a>  </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="deposit-with-crypto">
+<div class="scroll">
+  <div class="scroll-div">
+    <p class="open-account-platform"><a href="#see-methods"><span class="arrow-back"><</span></a>Open account with one available platform in your country</p>
+
+    <p class="center-platform-logo"><img class="platform-logo" src="icons/crypto logo.jpg"></p>
+
+    <div class="platform-box">
+      <div class="platform-block">
+    <div class="crypto-platforms-div">
+      <a  class="crypto-platform" href="#coinbase-playstore-applestore"><p>Coinbase</p></a>
+      <a  class="crypto-platform" href="#binance-playstore-applestore"><p>Binance</p></a>
+    </div>
+
+    <div class="crypto-platforms-div">
+      <a  class="crypto-platform" href="#gemini-playstore-applestore"><p>Gemini</p></a>
+      <a  class="crypto-platform" href="#kucoin-playstore-applestore"><p>Kucoin</p></a>
+    </div>
+  </div>
+  </div>
+
+  <div class="center-instruction">
+    <div class="center-block">
+
+    <p class="instruction n">- Open an account with the platform</p>
+    <p class="instruction n">- Verify your account profile on the crypto platform</p>
+    <p class="instruction n">- Buy crypto coins in the platform you register </p>
+    <p class="instruction n">- You can buy and sell crypto with P2p transaction on the platform</p>
+    <p class="instruction n">- Send crypto to your account wallet.</p>
+    <p class="instruction">- Withdraw your deposit after 2-3 business days.</p>
+    <p class="instruction n">- Access your account funds within 24hours of deposit</p>
+  </div>
+</div>
+<a class="i-have" href="transfer.html?#request-btc">I have bought a coin and i want to deposit to my account wallet</a>
+<div class="gap"></div>
+  </div>
+</div>
+</section>
+
+
+
+
+<section id="coinbase-playstore-applestore">
+  <div class="scroll">
+    <div class="scroll-div">
+      
+      <div class="center-apple-googplay-store">
+        <div>
+          <p class="download-platform">Download Coinbase &DownArrowBar;</p>
+       <a class="center-store" href="https://play.google.com/store/apps/details?id=com.coinbase.android"><p><img class="playstore store" src="icons/play store.jpg"></p></a> <br>
+      <a class="center-store" href="https://apps.apple.com/gb/app/coinbase-buy-bitcoin-ether/id886427730"><p><img class="applestore store" src="icons/applestore.jpg"></p></a>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="binance-playstore-applestore">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="center-apple-googplay-store">
+        <div>
+          <p class="download-platform">Download Binance &DownArrowBar;</p>
+       <a class="center-store" href="https://play.google.com/store/apps/details?id=com.binance.dev"><p><img class="playstore store" src="icons/play store.jpg"></p></a> <br>
+      <a class="center-store" href="https://apps.apple.com/gb/app/binance-buy-bitcoin-crypto/id1436799971"><p><img class="applestore store" src="icons/applestore.jpg"></p></a>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="gemini-playstore-applestore">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="center-apple-googplay-store">
+        <div>
+          <p class="download-platform">Download Gemini&DownArrowBar;</p>
+       <a class="center-store" href="https://play.google.com/store/apps/details?id=com.gemini.android.app"><p><img class="playstore store" src="icons/play store.jpg"></p></a> <br>
+      <a class="center-store" href="https://apps.apple.com/gb/app/gemini-buy-bitcoin-crypto/id1408914447"><p><img class="applestore store" src="icons/applestore.jpg"></p></a>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="kucoin-playstore-applestore">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="center-apple-googplay-store">
+        <div>
+          <p class="download-platform">Download KuCoin &DownArrowBar;</p>
+       <a class="center-store" href="https://play.google.com/store/apps/details?id=com.kubi.kucoin"><p><img class="playstore store" src="icons/play store.jpg"></p></a> <br>
+      <a class="center-store" href="https://apps.apple.com/ng/app/kucoin-buy-bitcoin-crypto/id1378956601"><p><img class="applestore store" src="icons/applestore.jpg"></p></a>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="check-secondbank-transfer">
+  <div class="scroll">
+    <div class="scroll-div">
+      <nav class="domestic-nav"><a href="transfer.html?#make-domestic-transfer">
+        <i class="fa arrow fa-chevron-left" aria-hidden="true"></i></a>
+        <div class="domestic-nav-div">
+        <p class="domestic-review"><span class="arrow"></span>Review & Send</p>
+      </div>
+      </nav>
+
+      <div class="profile-div">
+        <div class="profile">
+          <div class="profile-head-div">
+            <p class="profile-head"></p>
+            <p class="profile-body-div"><p class="profile-body"></p></p>
+          </div>
+        </div>
+      </div>
+      <p class="pp">Send <span class="usd" id="domestic-amount-data"></span></p>
+      <p class="pp to">to </p> 
+      <p class="pp" id="Name"></p>
+
+      <p class="note">
+        <span class="note-span">
+        Make sure you're sending to someone you trust and that their information is correct.Money usually moves to their account in minutes.</span>
+      </p>
+      <p class="once">Once you've sent money, you can't cancel it.</p>
+
+     <p class="secure-area-div sp">
+      <i class="fa lock fa-lock" aria-hidden="true"></i><span class="secure-area">Secure Area</span></p>
+
+      <nav class="confirm-domestic-nav">
+        <a href="popupnotifications.html">
+        <button class="confirm-domestic-btn">TConfirm and Send now</button></a>
+      </nav>
+
+    </div>
+  </div>
+  <script>
+   const jsn = localStorage.getItem('sec-form');
+    const oBj = JSON.parse(jsn);
+
+    for (key in oBj){
+      const Smarkup = `
+      <div>
+        <span>${key}: ${oBj[key]} </span>
+        </div>
+      `;
+      document.getElementById('sec-data').innerHTML += Smarkup;
+    }
+
+    document.getElementById('second-bank-result').innerHTML = localStorage.getItem('secondbank');
+
+    document.getElementById('second-bank-amount-result').innerHTML = localStorage.getItem('secondbankamount');
+
+  </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+  <section id="check-domestic-transfer">
+    <div class="scroll">
+      <div class="scroll-div">
+        <nav class="domestic-nav"><a href="transfer.html?#make-domestic-transfer">
+          <i class="fa arrow fa-chevron-left" aria-hidden="true"></i></a>
+          <div class="domestic-nav-div">
+          <p class="domestic-review"><span class="arrow"></span>Review & Send</p>
+        </div>
+        </nav>
+
+        <div class="profile-div">
+          <div class="profile">
+            <div class="profile-head-div">
+              <p class="profile-head"></p>
+              <p class="profile-body-div"><p class="profile-body"></p></p>
+            </div>
+          </div>
+        </div>
+        <p class="pp">Send <span class="usd" id="domestic-amount-data"></span></p>
+        <p class="pp to">to </p> 
+        <p class="pp" id="Name"></p>
+
+        <p class="note">
+          <span class="note-span">
+          Make sure you're sending to someone you trust and that their information is correct.Money usually moves to their account in minutes.</span>
+        </p>
+        <p class="once">Once you've sent money, you can't cancel it.</p>
+
+       <p class="secure-area-div sp">
+        <i class="fa lock fa-lock" aria-hidden="true"></i><span class="secure-area">Secure Area</span></p>
+
+        <nav class="confirm-domestic-nav">
+          <a href="popupnotifications.html">
+          <button class="confirm-domestic-btn">Transfer now</button></a>
+        </nav>
+
+      </div>
+    </div>
+    <script>
+      document.getElementById('Name').innerHTML = localStorage.getItem('name');
+
+
+      const domesticAmountJson =localStorage.getItem('domestic-amount-form');
+        const domesticAmountObj = JSON.parse(domesticAmountJson);
+    
+        for (key in domesticAmountObj){
+          const domesticAmountMarkup = `
+          <div>
+            <span>${key}${domesticAmountObj[key]} </span>
+            </div>
+          `;
+          document.getElementById('domestic-amount-data').innerHTML += domesticAmountMarkup ;
+        }
+    </script>
+  </section>
+
+
+
+
+
+
+  <section id="check-international-transfer-data">
+    <div class="scroll">
+      <div class="scroll-div">
+
+        <nav class="domestic-nav"><a href="transfer.html?#make-domestic-transfer">
+          <i class="fa arrow fa-chevron-left" aria-hidden="true"></i></a>
+          <div class="domestic-nav-div">
+          <p class="domestic-review"><span class="arrow"></span>Review & Send</p>
+        </div>
+        </nav>
+
+        <div class="profile-div">
+          <div class="profile">
+            <div class="profile-head-div">
+              <p class="profile-head"></p>
+              <p class="profile-body-div"><p class="profile-body"></p></p>
+            </div>
+          </div>
+        </div>
+        <p class="pp">You are about to Send  <span class="usd" id="int-amount-data"></span></p>
+        <p class="pp to">to recepient's details </p> 
+          <p class="int-data"> <span class="data" id="int-data"></span>
+
+        <p class="note">
+          <span class="note-span">
+          Make sure you're sending to someone you trust and that their information is correct.Money usually moves to their account in 1-2 business days.</span>
+        </p>
+        <p class="once">Once you've sent money, you can't cancel it.</p>
+
+       <p class="secure-area-div sp">
+        <i class="fa lock fa-lock" aria-hidden="true"></i><span class="secure-area">Secure Area</span></p>
+
+        <nav class="confirm-domestic-nav">
+          <a href="popupnotifications.html">
+          <button class="confirm-domestic-btn">Transfer now</button></a>
+        </nav>
+
+
+        <p ></p> <br> <br>
+  
+        <p ></p>
+  
+      </div>
+    </div>
+    <script>
+      const intJson = localStorage.getItem('int-form');
+        const intObj = JSON.parse(intJson);
+    
+        for (key in intObj){
+          const intMarkup = `
+          <div>
+            <span>${key}:<br> ${intObj[key]} <br><br> </span>
+            </div>
+          `;
+          document.getElementById('int-data').innerHTML += intMarkup;
+        }
+
+        const intAmountJson =localStorage.getItem('int-amount-form');
+        const intAmountObj = JSON.parse(intAmountJson);
+    
+        for (key in intAmountObj){
+          const intAmountMarkup = `
+          <div>
+            <span>${key}${intAmountObj[key]} </span>
+            </div>
+          `;
+          document.getElementById('int-amount-data').innerHTML += intAmountMarkup;
+        }
+    </script>
+  </section>
+
+
+
+
+
+
+
+
+<section id="check-crypto-transaction-data">
+  <div class="scroll">
+    <div class="scroll-div">
+      <p class="confirm-payment">Processing Payment...</p>
+      <p id="btc-data"></p>
+      <p class="crypto-key-object"><span  class="crypto-key">Network fee</span><span class="crypto-object">$9.99</span></p>
+      <p class="crypto-key-object"><span  class="crypto-key">Status</span><span class="crypto-object">Processing...</span></p>
+
+      <p class="screenshot-crypto">Screenshot and Submit this transaction details to the  <a class="crypto-customer-service" href="mailto:customerservicessx@gmail.com">@customer service</a> for fast process, it usually takes 30min to send payment after submitting payment receipt.
+      </p>
+
+      <p class="cancel-crypto-payment-button-div"><button class="cancel-crypto-payment-button" onclick="location.href='transfer.html?#cryptoaccountwallet'">Cancel payment</button></p>
+
+      <div class="high-gap"></div>
+    </div>
+  </div>
+  <script>
+    const BtcJson =localStorage.getItem('btcform');
+       const BtcObj = JSON.parse(BtcJson);
+   
+       for (key in BtcObj){
+         const BtcMarkup = `
+         <div>
+           <span class="crypto-key-object"><span class="crypto-key">${key}</span> <span class="crypto-object">${BtcObj[key]}</span> </span>
+           </div>
+         `;
+         document.getElementById('btc-data').innerHTML += BtcMarkup;
+       }
+ </script>
+</section>
+
+  
+ 
+  
+
+
+
+
+
+
+
+  
+
+<!--Network Connection--> <div class="wrapper">
+  <div class="toast">
+    <div class="content">
+      <div class="icon">connecting...</div>
+      <div class="details">
+        <span></span>
+        <p></p>
+      </div>
+    </div>
+    <div class="close-icon"><i class="uil uil-times"></i></div>
+  </div>
+</div>
+
+<script>
+// Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+  function ajax(){
+      let xhr = new XMLHttpRequest(); //creating new XML object
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+      xhr.onload = ()=>{ 
+          if(xhr.status == 200 && xhr.status < 300){
+              toast.classList.remove("offline");
+              title.innerText = "";
+              subTitle.innerText = "";
+              wifiIcon.innerHTML = 'online...';
+              closeIcon.onclick = ()=>{
+                  wrapper.classList.add("hide");
+              }
+              setTimeout(()=>{ 
+                  wrapper.classList.add("hide");
+              }, 100);
+          }else{
+              offline(); 
+          }
+      }
+      xhr.onerror = ()=>{
+          offline();
+      }
+      xhr.send(); 
+  }
+
+  function offline(){
+      wrapper.classList.remove("hide");
+      toast.classList.add("offline");
+      title.innerText = "You're offline now";
+      subTitle.innerText = "No internet connection";
+      wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+  }
+
+  setInterval(()=>{ 
+      ajax();
+  }, 900);
+}
+</script>
+  
+</body>
+</html>

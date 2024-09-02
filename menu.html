@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+  <title>Receive and Send $</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 10px;
+  color: green;
+  height: 20px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  font-weight: bold;
+  color: #878787;
+  font-size: 18px;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+/*         */
+
+
+
+
+
+
+
+
+
+   body::-webkit-scrollbar{
+    overflow-y: auto;
+   }
+
+*{
+  margin:0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
+}
+
+
+
+
+div ul a .navigation{
+  color: blue;
+}
+
+div .navigation{
+  overflow-y: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  border-top: 1px solid rgb(194, 194, 194);
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navcontainer{
+      font-size:15px;
+      display: block;
+      width: 100%;
+      height: 80px;
+      bottom:0;
+      position: fixed;
+      border-radius: 10px;
+    }
+
+.navigation ul{
+  display: flex;
+  width: 400px;
+}
+
+.navigation ul li{
+  position: relative;
+  list-style: none;
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+}
+
+.navigation ul li a{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.navigation ul li a .text{
+  position: absolute;
+  color: black;
+  font-size: 13px;
+  transition: 0.5s;
+  opacity: 1;
+  transform: translatey(30px);
+  width: 100px;
+}
+
+.navigation ul li:hover a .text{
+  text-decoration:underline;
+  color: rgb(0, 119, 255);
+}
+
+.span-icon{
+  display: block;
+}
+
+@media screen and (max-width: 300px){
+.navigation ul li a .text{
+  position: absolute;
+  color: black;
+  font-weight: 900;
+  font-size: 10px;
+  transition: 0.5s;
+  opacity: 1;
+  transform: translatey(30px);
+  width: 100px;
+  }
+    }
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="navcontainer">
+  <div class="navigation">
+    <ul>
+      <li class="list">
+        <a href="account.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-usd" aria-hidden="true"></i></span>Accounts</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="transfer.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-usd" aria-hidden="true"></i></span>Transfer</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="deposit.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></span>Deposit/Send</span>
+        </a>
+      </li>
+
+      <li class="list">
+        <a href="menu.html">
+          <span class="text"><span class="span-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>Menu</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+  
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+  <title>$Menu</title>
+  <style>
+     body{
+      overflow-y: hidden;
+    }
+    body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    section{
+      width: 100%;
+      height: 100vh;
+    }
+     .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+/* menu */
+   .menu-nav{
+    justify-content: right;
+    width: 100%;
+    height: 40vh;
+    padding: 0px 0px;
+    border-bottom: 1px solid black;
+    background-color: gold;
+   }
+   .logout-div{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    padding: 0px 20px;
+   }
+   .logout-icon{
+    font-size: 25px;
+    margin: 10px 0px;
+    color: red;
+   }
+   .logout{
+    font-size:13px;
+   }
+   .profile{
+    display: flex;
+    width: 100%;;
+    justify-content: left;
+    margin: 10px 0px;
+   }
+   .menu-img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+   }
+   .center-menu{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+   }
+   .p{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+   }
+   .a{
+    margin: 10px 0px;
+    padding: 20px 0px;
+   }
+   .menu-box{
+    margin-top: -20px;
+    border-radius: 10px;
+    width: 200px;
+    height: 100px;
+    border: 2px solid gold;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   .eye-a{
+    margin: 5px 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+   }
+   .eye-icon{
+    font-size: 12px;
+   }
+   /*  body  */
+  .menu-flex{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .menu-p{
+    box-shadow: 0 0 9px rgb(177, 175, 175);
+    width: 150px;
+    height: 130px;
+    margin: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+
+  .gap{
+    height: 100px;
+    width: 1005;
+  }
+  </style>
+</head>
+<body>
+  <section id="menu">
+    <div class="scroll">
+      <div class="scroll-div">
+        <nav class="menu-nav">
+          <p class="logout-div"><span class="profile"><a href="#"><button class="menu-img"><img class="menu-img" src="icons/profile.jpg"></button></a></span>
+
+            <a href="logout.html"><i class="fa logout-icon fa-arrow-circle-right" aria-hidden="true"></i> <br> <span class="logout"> logout</span></a></p>
+
+            <p class="p">Total Balance</p>
+            <p class="p"><a class="a" href="dashboard.html?#$dashboard">******* <i class="fa fa-eye-slash" aria-hidden="true"></i></a></p>
+
+            <div class="p">
+              <div class="menu-box">
+                <div class="menu-box-block">
+                  <p><a href="dashboard.html">Personal Checkings</a></p>
+                  <p class="eye-a"><a  href="dashboard.html">*******<i class="fa eye-icon fa-eye-slash" aria-hidden="true"></i></a></a></p>
+
+                </div>
+              </div>
+            </div>
+        </nav>
+    
+      <div class="menu-flex">
+          <p class="menu-p"><i class="fa icons fa-university" aria-hidden="true"></i></p>
+          <div  class="menu-p"><span class="icons"><i class="fa fa-eur" aria-hidden="true"></i> &LeftArrowRightArrow;</span></div>
+          <p class="menu-p"><i class="fa icons fa-credit-card-alt" aria-hidden="true"></i></p>
+      </div>
+
+      <div class="menu-flex">
+        <div class="menu-p">&LeftArrow; <br>&dollar; <br> &RightArrow;</div>
+        <div class="menu-p"><i class="fa fa-gbp" aria-hidden="true"></i>&RightArrowLeftArrow;</div>
+        <p class="menu-p"><i class="fa fa-plane" aria-hidden="true"></i></p>
+    </div>
+
+<div class="gap"></div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+
+
+
+
+
+
+  
+
+<!--Network Connection--> <div class="wrapper">
+  <div class="toast">
+    <div class="content">
+      <div class="icon">connecting...</div>
+      <div class="details">
+        <span></span>
+        <p></p>
+      </div>
+    </div>
+    <div class="close-icon"><i class="uil uil-times"></i></div>
+  </div>
+</div>
+
+<script>
+// Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+  function ajax(){
+      let xhr = new XMLHttpRequest(); //creating new XML object
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+      xhr.onload = ()=>{ 
+          if(xhr.status == 200 && xhr.status < 300){
+              toast.classList.remove("offline");
+              title.innerText = "";
+              subTitle.innerText = "";
+              wifiIcon.innerHTML = 'online...';
+              closeIcon.onclick = ()=>{
+                  wrapper.classList.add("hide");
+              }
+              setTimeout(()=>{ 
+                  wrapper.classList.add("hide");
+              }, 100);
+          }else{
+              offline(); 
+          }
+      }
+      xhr.onerror = ()=>{
+          offline();
+      }
+      xhr.send(); 
+  }
+
+  function offline(){
+      wrapper.classList.remove("hide");
+      toast.classList.add("offline");
+      title.innerText = "You're offline now";
+      subTitle.innerText = "No internet connection";
+      wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+  }
+
+  setInterval(()=>{ 
+      ajax();
+  }, 900);
+}
+</script>
+  
+</body>
+</html>

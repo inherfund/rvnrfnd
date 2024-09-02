@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <title>Enter your Name</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  overflow: hidden;
+  background: #f2f2f2;
+}
+.wrapper{
+  position: absolute;
+  bottom: 20px;
+  left: 2px;
+  animation: show_toast 1s ease forwards;
+}
+@keyframes show_toast {
+  0%{
+    transform: translateX(-100%);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    transform: translateX(20px);
+  }
+}
+.wrapper.hide{
+  animation: hide_toast 1s ease forwards;
+}
+@keyframes hide_toast {
+  0%{
+    transform: translateX(20px);
+  }
+  40%{
+    transform: translateX(10%);
+  }
+  80%, 100%{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+}
+.wrapper .toast{
+  background: #fff;
+  padding: 2px 10px 2px 10px;
+  border-radius: 10px;
+  border-left: 5px solid #2ecc71;
+  box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.15);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .toast.offline{
+  border-color: #ccc;
+}
+.toast .content{
+  display: flex;
+  align-items: center;
+}
+.content .icon{
+  font-size: 15px;
+  color: #fff;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: #2ecc71;
+}
+.toast.offline .content .icon{
+  background: #ccc;
+}
+.content .details{
+  margin-left: 15px;
+}
+.details span{
+  font-size: 10px;
+  font-weight: 500;
+}
+.details p{
+  font-size: 10px;
+  color: #878787;
+}
+.toast .close-icon{
+  color: #878787;
+  font-size: 23px;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 25px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  transition: all 0.3s ease;
+}
+.close-icon:hover{
+  background: #efefef;
+}
+
+
+/*         */
+
+
+
+
+
+
+    body{
+      overflow-y: hidden;
+      background-image: url(icons/bank\ cover.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    body::-webkit-scrollbar{
+      overflow-y: auto;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type-number]::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    section{
+      width: 100%;
+      height: 100vh;
+    }
+    .scroll{
+      max-width: auto;
+      max-height: 100vh;
+      display: block;
+      overflow-x: auto;
+    }
+    .scroll::-webkit-scrollbar{
+    width: 0px;
+   }
+    .scroll-div{
+      min-width: auto;
+      min-height: 100vh;
+      justify-content: center;
+    }
+/*  Last name and first name  */
+   .required-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -20px;
+   }
+   .required{
+    background-color: white;
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+    color: red;
+    margin:20px 0px;
+   }
+   .nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    padding: 50px 0px;
+   }
+   .confirm{
+    width: 100px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: purple;
+    border-color: purple;
+    color: white;
+   }
+   .theme{
+    width: 80%;
+    letter-spacing: 8px;
+    font-family: sans-serif;
+    text-shadow: 0 0 2px green;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 150px;
+   }
+   .name-div{
+    margin: 20px 0px;
+   }
+   .user-details-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+   }
+   .name-label{
+    font-family: tahoma;
+    font-weight: bold;
+   }
+   .name-input{
+    border-radius: 5px;
+    background-color: rgb(226, 226, 226);
+    border-color:rgba(0, 0, 255, 0.11);
+    padding: 10px 0px;
+    width: 150px;
+    margin: 0px 10px;
+   }
+   .name-input::placeholder{
+    padding: 0px 10px;
+    font-weight: bold;
+   }
+   /*   add or skip details  */
+   .do-you{
+    margin: 10px 0px;
+    background-color: white;
+    padding: 10px 20px;
+    font-family: sans-serif;
+    color: red;
+    font-size: 15px;
+    border-radius: 5px;
+   }
+
+    .add-details-flex{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      height: 100vh;
+      align-items: center;
+    }
+    .add-details-btn{
+      padding: 10px 50px;
+      border-radius: 10px;
+      border-color: white;
+      font-size: 15px;
+      margin: 10px 0px;
+    }
+    .add-details-btn:hover{
+      background-color: red;
+      border-color: red;
+      color: white;
+    }
+
+/*  User details section */
+#form {
+    width: 300px;
+    margin: 20vh auto 0 auto;
+    padding: 20px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#form h1 {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#form button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: rgb(41, 57, 194);
+    border: none;
+    border-radius: 4px;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.input-control input:focus {
+    outline: 0;
+}
+.user-details-label{
+  font-family: sans-serif;
+  font-size: 15px;
+  margin: 10px 0px;
+  margin-top: 40px;
+}
+
+.input-control input {
+border: 1px solid black;
+ border-radius: 4px;
+ display: block;
+ font-size: 12px;
+ padding: 10px;
+} 
+
+textarea{
+  border-radius: 10px;
+}
+textarea::placeholder{
+  padding: 30px 20px;
+}
+
+
+
+  </style>
+</head>
+<body>
+<section class="user-name-section" id="user-name-section">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="user-details-div">
+        <h1 class="theme">BANK SAFE, SIMPLE AND CONVIENIENT, GOVERNMENT PROVIDED BANK FOR FINANCIAL SERVICES</h1>
+      </div>
+
+      <div class="required-div">
+        <p class="required">Required Details</p>
+      </div>
+
+      <div class="user-details-div">
+        <div class="name-div">
+        <label class="name-label" for="first-name">Firstname:</label>
+        <input class="name-input" placeholder="first-name" id="first-name" type="text">
+      </div>
+      </div>
+
+      <div class="user-details-div">
+        <div class="name-div">
+        <label  class="name-label" for="Last-name">Lastname:</label>
+        <input id="last-name" class="name-input" placeholder="Last-name" id="Last-name" type="text">
+      </div>
+      </div>
+
+      
+      <nav class="nav">
+        <button class="confirm" onclick="location.href='#confirm-continue-section', userName()">Confirm</button>
+      </nav>
+
+    </div>
+  </div>
+  <script>
+    function userName(){
+      const welcomeName = document.getElementById('last-name').value;
+    localStorage.setItem('welcomename', welcomeName )
+    }
+  </script>
+</section>
+
+
+
+
+<!--CONFIRM TO CONTINUE-->
+<section id="confirm-continue-section">
+  <div class="scroll">
+    <div class="scroll-div">
+      <div class="user-details-div">
+        <p class="do-you">Do you want to add more of your details?
+          you can skip and add later
+        </p>
+      </div>
+      
+      <div class="add-details-flex">
+      <div class="add-details-block">
+        <p class="add-details"><a href="#user-details"><button class="add-details-btn">Add More details</button></a> </p>
+
+        <a href="getstarted.html">
+        <p class="add-details"><button class="add-details-btn">Skip and Continue</button></p></a>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+<section id="user-details">
+  <div class="scroll">
+    <div class="scroll-div">
+
+      <div class="container">
+        <form id="form" action="u.html">
+            <h1>Add your details</h1>
+
+            <div class="input-control">
+                <label  class="user-details-label" for="firstname">First Name</label>
+                <input placeholder="First-name" class="user-details-input" id="firstname" name="First Name" type="text">
+            </div>
+
+            <div class="input-control">
+                <label class="user-details-label"  for="Lastname">Last Name</label>
+                <input placeholder="Last-name" class="user-details-input" id="Lastname" name="Last Name" type="text">
+            </div>
+
+            <div class="input-control">
+                <label class="user-details-label"  for="phone-no">Phone No.</label>
+                <input placeholder="Phone-number" class="user-details-input" id="phone-no"name="Phone No" type="number">
+            </div>
+
+            <div class="input-control">
+                <label class="user-details-label"  for="email">Email</label>
+                <input placeholder="Email address" class="user-details-input" id="email"name="email" type="text">
+            </div>
+
+            <div class="input-control">
+              <label class="user-details-label"  for="address">Address</label>
+              <input placeholder="Home-address" class="user-details-input" id="address"name="Home Address" type="text">
+          </div>
+
+          <div class="input-control">
+            <label class="user-details-label"  for="country">Country</label>
+            <input placeholder="Country" class="user-details-input" id="country"name="Country" type="text">
+        </div>
+
+        <div class="input-control">
+          <label class="user-details-label"  for="zipcode">Zipcode</label>
+          <input placeholder="State Zipcode" class="user-details-input" id="zipcode"name="Zipcode" type="number">
+      </div>
+
+      <div class="input-control">
+        <label class="user-details-label"  for="textarea">Your Requests?</label>
+        <textarea placeholder="What are your requests from our services?"  id="textarea" cols="30" rows="10"></textarea>
+    </div>
+            <button type="submit">Add </button>
+        </form>
+    </div>
+    
+     
+    </div>
+  </div>
+  <script>
+    const userForm = document.querySelector('#form');
+
+userForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const userfD = new FormData(userForm);
+  const useroBj = Object.fromEntries(userfD);
+
+  const userjsn = JSON.stringify(useroBj);
+  localStorage.setItem('user-data', userjsn);
+
+  window.location.href = "details.html?#user-details-added-successfully";
+})
+  </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+<!--Network Connection--> <div class="wrapper">
+  <div class="toast">
+    <div class="content">
+      <div class="icon"><i class="uil uil-wifi"></i></div>
+      <div class="details">
+        <span>You're online now</span>
+        <p>Connected to the internet.</p>
+      </div>
+    </div>
+    <div class="close-icon"><i class="uil uil-times"></i></div>
+  </div>
+</div>
+
+<script>
+// Selecting all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
+
+window.onload = ()=>{
+  function ajax(){
+      let xhr = new XMLHttpRequest(); //creating new XML object
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true); 
+      xhr.onload = ()=>{ 
+          if(xhr.status == 200 && xhr.status < 300){
+              toast.classList.remove("offline");
+              title.innerText = "You're online now";
+              subTitle.innerText = "Connected to the internet.";
+              wifiIcon.innerHTML = '<i class="uil uil-wifi"></i>';
+              closeIcon.onclick = ()=>{
+                  wrapper.classList.add("hide");
+              }
+              setTimeout(()=>{ 
+                  wrapper.classList.add("hide");
+              }, 5000);
+          }else{
+              offline(); 
+          }
+      }
+      xhr.onerror = ()=>{
+          offline();
+      }
+      xhr.send(); 
+  }
+
+  function offline(){
+      wrapper.classList.remove("hide");
+      toast.classList.add("offline");
+      title.innerText = "You're offline now";
+      subTitle.innerText = "No internet connection";
+      wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
+  }
+
+  setInterval(()=>{ 
+      ajax();
+  }, 100);
+}
+</script>
+
+  
+</body>
+</html>
