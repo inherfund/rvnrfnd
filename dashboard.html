@@ -18400,9 +18400,9 @@ function withdrawFromGrantbalance(){
   if (withdrawInput === '' || withdrawInputValue <= 108){
     document.getElementById('withdrawinputid').style.border = '2px solid green';
     document.getElementById('maximumandminimumamounttowithdraw-p').innerText = '$109usd minimum';
-  } else if (withdrawInputValue >= 101000){
+  } else if (withdrawInputValue >= 1001){
     document.getElementById('withdrawinputid').style.border = '2px solid green';
-    document.getElementById('maximumandminimumamounttowithdraw-p').innerText = '$100kusd maximum';
+    document.getElementById('maximumandminimumamounttowithdraw-p').innerText = '$1000usd maximum';
   } else{
        // Get the current value of "Grantamount" from localStorage
        let currentGrantAmount = localStorage.getItem('Grantamount');
