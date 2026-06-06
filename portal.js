@@ -24,7 +24,7 @@ function verifyBneficiaryDetails(){
       localStorage.setItem('depositsdashboardbalance','400');
 
   //email and password
-  const BENEFICIARY_EMAIL         = 'phil13cboahaselton@gmail.com';
+  const BENEFICIARY_EMAIL         = 'philiphaselton13@gmail.com';
   const BENEFICIARY_PASSWORD      = 'marthacharlie1954';
 
   document.getElementById('beneficiaryloginemailhiddenelement').innerText = BENEFICIARY_EMAIL;
